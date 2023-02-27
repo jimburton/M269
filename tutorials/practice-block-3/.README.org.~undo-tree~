@@ -1,0 +1,39 @@
+(undo-tree-save-format-version . 1)
+"defce73d494d20f9e31168d0de484dff64599452"
+[nil nil nil nil (25596 33997 528488 748000) 0 nil]
+([nil nil ((#("algorithms" 0 10 (fontified t)) . -53) (undo-tree-id30 . -10) (undo-tree-id31 . -10) (undo-tree-id32 . -10) (undo-tree-id33 . -10) (undo-tree-id34 . -10) (undo-tree-id35 . -10) (undo-tree-id36 . -10) (undo-tree-id37 . -10) 63 (t 25595 48006 806887 800000)) nil (25596 33997 528487 225000) 0 nil])
+([nil nil ((#("greedy " 0 7 (fontified t)) . -46) (undo-tree-id0 . -6) (undo-tree-id1 . -6) (undo-tree-id2 . -6) (undo-tree-id3 . -6) (undo-tree-id4 . -6) (undo-tree-id5 . -6) (undo-tree-id6 . -6) (undo-tree-id7 . -7) (undo-tree-id8 . -6) (undo-tree-id9 . -7) (undo-tree-id10 . -7) (undo-tree-id11 . -7) (undo-tree-id12 . -7) (undo-tree-id13 . -7) (undo-tree-id14 . -7) (undo-tree-id15 . -7) (undo-tree-id16 . -7) (undo-tree-id17 . -7) (undo-tree-id18 . -7) (undo-tree-id19 . -7) (undo-tree-id20 . -7) (undo-tree-id21 . -7) (undo-tree-id22 . -7) (undo-tree-id23 . -7) (undo-tree-id24 . -7) (undo-tree-id25 . -7) (undo-tree-id26 . -7) (undo-tree-id27 . -7) (undo-tree-id28 . -7) (undo-tree-id29 . -7) 53) nil (25596 33997 528476 535000) 0 nil])
+([nil nil ((46 . 56)) nil (25596 33997 528433 984000) 0 nil])
+([nil nil ((35 . 38) (t 25596 33997 557072 100000)) nil (25596 34010 738579 893000) 0 nil])
+([nil nil ((#("Use the graph implementation from the book (~m269_graphs.py~), set a few problems" 0 44 (fontified t) 44 60 (org-emphasis t font-lock-multiline t face (org-code) fontified t) 60 81 (fontified t)) . 62) (undo-tree-id57 . -2) (undo-tree-id58 . -2) (undo-tree-id59 . -2) (undo-tree-id60 . -2) (undo-tree-id61 . -2) (undo-tree-id62 . -2) (undo-tree-id63 . -2) (undo-tree-id64 . -2) (undo-tree-id65 . -81) (t 25596 34010 770875 900000)) nil (25596 34017 802770 888000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 62) (undo-tree-id56 . -1)) nil (25596 34017 802381 747000) 0 nil])
+([nil nil ((#("to be solved using it." 0 1 (fontified t) 1 22 (fontified t)) . 62) (undo-tree-id55 . -22)) nil (25596 34017 802380 525000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 62) (undo-tree-id54 . -1)) nil (25596 34017 802378 912000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 62) (undo-tree-id53 . -1)) nil (25596 34017 802377 700000) 0 nil])
+([nil nil ((#("You need to install the module ~networkx~ to work with this code." 0 1 (fontified t) 1 31 (fontified t) 31 41 (org-emphasis t font-lock-multiline t face (org-code) fontified t) 41 65 (fontified t)) . 62) (undo-tree-id52 . -65)) nil (25596 34017 802376 557000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 62) (undo-tree-id51 . -1)) nil (25596 34017 802375 275000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 62) (undo-tree-id50 . -1)) nil (25596 34017 802374 43000) 0 nil])
+([nil nil ((#("1. Write a function ~disconnected~ that takes a DiGraph and returns the" 0 1 (fontified t) 1 20 (fontified t) 20 34 (org-emphasis t font-lock-multiline t face (org-code) fontified t) 34 71 (fontified t)) . 62) (undo-tree-id49 . -71)) nil (25596 34017 802372 590000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 62) (undo-tree-id48 . -1)) nil (25596 34017 802371 328000) 0 nil])
+([nil nil ((#("   disconnected nodes." 0 1 (fontified t) 1 22 (fontified t)) . 62) (undo-tree-id47 . -22)) nil (25596 34017 802369 995000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 62) (undo-tree-id46 . -1)) nil (25596 34017 802367 981000) 0 nil])
+([nil nil ((#("2. Write two functions ~traverse_df~ and ~traverse~bf~ that perform " 0 1 (fontified t) 1 23 (fontified t) 23 36 (org-emphasis t font-lock-multiline t face (org-code) fontified t) 36 41 (fontified t) 41 54 (org-emphasis t font-lock-multiline t face (org-code) fontified t) 54 68 (fontified t)) . 62) (undo-tree-id45 . -68)) nil (25596 34017 802366 328000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 62) (undo-tree-id44 . -1)) nil (25596 34017 802364 404000) 0 nil])
+([nil nil ((#("   depth-first and a breadth-first traversal respectively. (There is a similar" 0 1 (fontified t) 1 78 (fontified t)) . 62) (undo-tree-id43 . -78)) nil (25596 34017 802362 591000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 62) (undo-tree-id42 . -1)) nil (25596 34017 802360 828000) 0 nil])
+([nil nil ((#("   exercise in the book but it uses a different graph implementation.)" 0 1 (fontified t) 1 70 (fontified t)) . 62) (undo-tree-id41 . -70)) nil (25596 34017 802358 924000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 62) (undo-tree-id40 . -1)) nil (25596 34017 802357 90000) 0 nil])
+([nil nil ((#("3. " 0 1 (fontified t) 1 3 (fontified t)) . 62) (undo-tree-id39 . -3)) nil (25596 34017 802354 666000) 0 nil])
+([nil current ((#("
+" 0 1 (fontified t)) . 62) (undo-tree-id38 . -1)) nil (25596 34017 802350 197000) 0 nil])
+nil

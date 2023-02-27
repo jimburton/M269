@@ -2,7 +2,10 @@ from solution import *
 
 tree0 = Graph.build({'A', 'B', 'C', 'D'}, {('A', 'B'), ('A', 'C')})
 
-tree1 = Graph.build({'A', 'B', 'C', 'D', 'E', 'F', 'G'}, {('A', 'B'), ('A', 'C'), ('A', 'E'), ('B', 'D'), ('B', 'F'), ('C', 'G'), ('E', 'F')})
+tree1 = Graph.build({'A', 'B', 'C', 'D', 'E', 'F', 'G'}
+                    , {('A', 'B'), ('A', 'C'), ('A', 'E')
+                       , ('B', 'D'), ('B', 'F'), ('C', 'G')
+                       , ('E', 'F')})
 
 def test_disconnected():
     assert tree0.disconnected() == {'D'}

@@ -61,9 +61,10 @@ class Graph:
     def traverse_df(self, node) -> list:
         """
         procedure DFS(G, v) is
-    label v as discovered
-    for all directed edges from v to w that are in G.neighbours(v) do
-        if vertex w is not labeled as discovered then
+        label v as discovered
+        for all directed edges from v to w that are in
+        G.neighbours(v) do
+          if vertex w is not labeled as discovered then
             recursively call DFS(G, w)
         """
         if node not in self.nodes:
@@ -73,25 +74,50 @@ class Graph:
             result.extend(self.traverse_df(n))
         return list(dict.fromkeys(result))
 
+    def traverse_df_iter(self, node) -> list:
+        """
+        procedure DFS_iterative(G, v) is
+        let S be a stack
+        S.push(v)
+        while S is not empty do
+        v = S.pop()
+        if v is not labeled as discovered then
+            label v as discovered
+            for all edges from v to w in G.adjacentEdges(v) do 
+                S.push(w)
+        """
+        if node not in self.nodes:
+            raise RuntimeError(f"Node not in graph: {node}")
+        stack = [node]
+        result = [node]
+        while stack:
+            v = stack.pop()
+            if v not in result:
+                result.append(v)
+            for n in self.neighbours_out(v):
+                stack.append(n)
+        return result
+        
     def traverse_bf(self, node) -> list:
         """
         Input: A graph G and a starting vertex root of G
 
-Output: Goal state. The parent links trace the shortest path back to root[8]
+        Output: Goal state. The parent links trace the shortest
+        path back to root[8]
 
- 1  procedure BFS(G, root) is
- 2      let Q be a queue
- 3      label root as explored
- 4      Q.enqueue(root)
- 5      while Q is not empty do
- 6          v := Q.dequeue()
- 7          if v is the goal then
- 8              return v
- 9          for all edges from v to w in G.adjacentEdges(v) do
-10              if w is not labeled as explored then
-11                  label w as explored
-12                  w.parent := v
-13                  Q.enqueue(w)
+        1  procedure BFS(G, root) is
+        2      let Q be a queue
+        3      label root as explored
+        4      Q.enqueue(root)
+        5      while Q is not empty do
+        6          v := Q.dequeue()
+        7          if v is the goal then
+        8              return v
+        9          for all edges from v to w in G.adjacentEdges(v) do
+        10              if w is not labeled as explored then
+        11                  label w as explored
+        12                  w.parent := v
+        13                  Q.enqueue(w)
         """
         if node not in self.nodes:
             raise RuntimeError(f"Node not in graph: {node}")
@@ -104,6 +130,12 @@ Output: Goal state. The parent links trace the shortest path back to root[8]
                     result.append(n)
                     queue.append(n)
         return result
-                    
-tree1 = Graph.build({'A', 'B', 'C', 'D', 'E', 'F', 'G'}, {('A', 'B'), ('A', 'C'), ('A', 'E'), ('B', 'D'), ('B', 'F'), ('C', 'G'), ('E', 'F')})
 
+# a couple of trees for playing in the REPL
+                    
+tree0 = Graph.build({'A', 'B', 'C', 'D'}, {('A', 'B'), ('A', 'C')})
+
+tree1 = Graph.build({'A', 'B', 'C', 'D', 'E', 'F', 'G'}
+                    , {('A', 'B'), ('A', 'C'), ('A', 'E')
+                       , ('B', 'D'), ('B', 'F'), ('C', 'G')
+                       , ('E', 'F')})
