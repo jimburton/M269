@@ -2,4 +2,33 @@
 
 ** Graphs and traversals.
 
-The implementation 
+The implementation of a graph in [[./graph.py][graph.py]] stores a list of /nodes/ (also called
+/vertices/), which can be values of any type, and a list of /edges/, which are
+pairs of nodes representing connections in the graph. It is a /directed/ graph,
+in that an edge ~(n1, n2)~ is a connection between ~n1~ to ~n2~ and does not
+mean there is necessarily any connection between ~n2~ and ~n1~. It can be used
+as an /undirected/ graph by explicitly adding edges in each direction.
+
+The following exercises are to give you some practice working with graphs and in
+particular with implementing various /traversals/. My solutions are in the
+~solutions~ branch.
+
+*** Depth-first traversal
+
+A depth-first traversal begins at a given node, ~n~ then selects one of ~n~'s
+neighbours and continues in this way until it reaches a node with no
+neighbours, ~p~. It then checks whether the node visited prior to ~p~, ~o~ has any
+neighbours: if it does, it selects one of those and once again continues until
+it reaches a dead end. If ~o~ has no neighbours it carries on reversing along
+the path it took until it finds a previously visited node that has neighbours.
+
+Depth-first traversal can be implemented /iteratively/ (ie with a loop) or
+/recursively/. 
+
+*** Breadth-first traversal
+
+*** Orders of traversal
+
+  + *Inorder*
+  + *Preorder*
+  + *Postorder*
