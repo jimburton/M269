@@ -52,18 +52,13 @@ class Graph:
         Collects the set of disconnected nodes (those which are not part
         of any edge) in the graph.
         """
-        discovered = self.nodes.copy()
-        for n in self.nodes:
-            for e in self.edges:
-                if n == e[0] or n == e[1]:
-                    discovered.discard(n)
-        return discovered
+        return set()
 
     def elem(self, n) -> bool:
         """
         Returns true if n is a node in this graph, otherwise false.
         """
-        return n in self.nodes
+        return False
 
     def neighbours_out(self, n) -> set:
         """
@@ -72,13 +67,7 @@ class Graph:
 
         Throws a RuntimeError if n is not in the graph. 
         """
-        if n not in self.nodes:
-            raise RuntimeError(f"Node not in graph: {n}")
-        discovered = set()
-        for e in self.edges:
-            if e[0] == n:
-                discovered.add(e[1])
-        return discovered
+        return set()
 
     def neighbours_in(self, n) -> set:
         """
@@ -87,13 +76,7 @@ class Graph:
 
         Throws a RuntimeError if n is not in the graph. 
         """
-        if n not in self.nodes:
-            raise RuntimeError(f"Node not in graph: {n}")
-        discovered = set()
-        for e in self.edges:
-            if e[1] == n:
-                discovered.add(e[0])
-        return discovered
+        return set()
 
     def traverse_df_rec(self, n) -> list:
         """
@@ -102,12 +85,7 @@ class Graph:
 
         Throws a RuntimeError if n is not in the graph. 
         """
-        if n not in self.nodes:
-            raise RuntimeError(f"Node not in graph: {n}")
-        discovered = [n]
-        for m in self.neighbours_out(node):
-            discovered.extend(self.traverse_df_rec(m))
-        return list(dict.fromkeys(discovered))
+        return []
 
     def traverse_df_iter(self, n) -> list:
         """
@@ -117,17 +95,7 @@ class Graph:
 
         Throws a RuntimeError if n is not in the graph.
         """
-        if n not in self.nodes:
-            raise RuntimeError(f"Node not in graph: {n}")
-        stack = [n]
-        discovered = [n]
-        while stack:
-            v = stack.pop()
-            if v not in discovered:
-                discovered.append(v)
-            for m in self.neighbours_out(v):
-                stack.append(m)
-        return discovered
+        return []
         
     def traverse_bf(self, n) -> list:
         """
@@ -137,17 +105,7 @@ class Graph:
 
         Throws a RuntimeError if n is not in the graph.
         """
-        if n not in self.nodes:
-            raise RuntimeError(f"Node not in graph: {n}")
-        queue = [n]
-        discovered = [n]
-        while queue:
-            m = queue.pop(0)
-            for o in self.neighbours_out(m):
-                if o not in discovered:
-                    discovered.append(o)
-                    queue.append(o)
-        return discovered
+        return []
 
         def __str__(self):
             """
