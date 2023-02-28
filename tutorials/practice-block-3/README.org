@@ -4,23 +4,23 @@ Dr James Burton, March 2023
 
 ** Graphs and traversals.
 
-The implementation of a graph in [[./graph.py][graph.py]] stores a list of /nodes/ (also called
-/vertices/), which can be values of any type, and a list of /edges/, which are
-pairs of nodes representing connections in the graph. It is a /directed/ graph,
-in that an edge ~(n1, n2)~ is a connection between ~n1~ to ~n2~ and does not
-mean there is necessarily any connection between ~n2~ and ~n1~. In the latter
-example we say that ~n1~ is the /source/ of the edge and ~n2~ is its
-/target/.
+The following exercises are to give you some practice working with /graphs/ and in
+particular with implementing various /traversals/. My solutions are in the
+~solutions~ branch of the repository at https://github.com/jimburton/M269.
 
 TODO: REFERENCES TO THE BOOK.
 
-The following exercises are to give you some practice working with graphs and in
-particular with implementing various /traversals/. My solutions are in the
-~solutions~ branch.
+The implementation of the graph ADT in [[./graph.py][graph.py]] stores a list of /nodes/ (also
+called /vertices/), which can be values of any type, and a list of /edges/,
+which are pairs of nodes representing connections in the graph. It is a
+/directed/ graph, in that an edge ~(n1, n2)~ is a connection between ~n1~ to
+~n2~ and does not mean there is necessarily any connection between ~n2~ and
+~n1~. In the latter example we say that ~n1~ is the /source/ of the edge and
+~n2~ is its /target/.
 
 *** Depth-first traversal
 
-A depth-first traversal begins at a given node, ~n~ then selects one of ~n~'s
+A depth-first traversal begins at a given node, ~n~, then selects one of ~n~'s
 neighbours and continues in this way until it reaches a node with no
 neighbours, ~p~. It then checks whether the node visited prior to ~p~, ~o~ has any
 neighbours: if it does, it selects one of those and once again continues until
