@@ -95,7 +95,7 @@ particular node, forming a breadth-first /search/ of the graph. The pseudocode
 below gives the algorithm for finding /every/ path from ~source~ to ~target~  
 
 #+BEGIN_EXAMPLE
-PROCEDURE BFS(G, source, target): list
+PROCEDURE BFS(G, source, target): <type of labels in G>
   discovered := empty list
   queue := empty queue
   add source to discovered
