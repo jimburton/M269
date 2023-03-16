@@ -62,6 +62,7 @@ PROCEDURE DFT_ITER(G, v): list
     FOR all edges from v to w in G DO 
       push w onto stack
     END FOR
+    RETURN discovered
 END PROCEDURE
 #+END_EXAMPLE
 
@@ -91,6 +92,7 @@ PROCEDURE BFS(G, v): list
       END IF
     END FOR
   END WHILE
+  RETURN discovered
 END PROCEDURE
 #+END_EXAMPLE
 
@@ -122,7 +124,7 @@ Implement the following methods in the file [[./graph.py][graph.py]].
 
 With a minor extension this algorithm can be adapted to search for a
 particular node, forming a breadth-first /search/ of the graph. The pseudocode
-below gives the algorithm for finding /every/ path from ~source~ to ~target~  
+below gives the algorithm for searching for /every/ path from ~source~ to ~target~.
 
 #+BEGIN_EXAMPLE
 PROCEDURE BFS(G, source, target): <type of labels in G>
@@ -144,4 +146,5 @@ PROCEDURE BFS(G, source, target): <type of labels in G>
 END PROCEDURE
 #+END_EXAMPLE
 
-We then need to find the /shortest/ path from source ot target.
+We then need to find the /shortest/ path from source to target. How would you go
+about that?
