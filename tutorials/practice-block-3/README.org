@@ -1,22 +1,24 @@
 * M269 Tutorial: Practice Block Three
 
-Dr James Burton, March 2023
+/Dr James Burton, March 2023/
 
 ** Graphs and traversals.
 
-The following exercises are to give you some practice working with /graphs/ and in
+The following exercises are to give you some extra practice working with graphs, and in
 particular with implementing various /traversals/. My solutions are in the
 ~solutions~ branch of the repository at https://github.com/jimburton/M269.
 
-TODO: REFERENCES TO THE BOOK.
+The exercises below relate to the following sections of the M269 book: Chapters
+17 /Graphs 1/, especially 17.7 /Traversing a Graph/ and 17.8 /Breadth- and
+Depth-first Search/.
 
-The implementation of the graph ADT in [[./graph.py][graph.py]] stores a list of /nodes/ (also
-called /vertices/), which can be values of any type, and a list of /edges/,
-which are pairs of nodes representing connections in the graph. It is a
-/directed/ graph, in that an edge ~(n1, n2)~ is a connection between ~n1~ to
-~n2~ and does not mean there is necessarily any connection between ~n2~ and
-~n1~. In the latter example we say that ~n1~ is the /source/ of the edge and
-~n2~ is its /target/.
+The implementation of the graph ADT in the file [[./graph.py][graph.py]] is simpler than that in
+the book (Section 17.6). It stores a list of /nodes/ (also called /vertices/),
+which can be values of any type, and a list of /edges/, which are pairs of nodes
+representing connections in the graph. It is a /directed/ graph, in that an edge
+~(n1, n2)~ is a connection between ~n1~ to ~n2~ and does not mean there is
+necessarily any connection between ~n2~ and ~n1~. In the latter example we say
+that ~n1~ is the /source/ of the edge and ~n2~ is its /target/.
 
 *** Depth-first traversal
 
