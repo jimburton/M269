@@ -34,7 +34,7 @@ class Graph:
         """
         Adds a node to the graph.
         """
-        if v not in self.nodes:
+        if n not in self.nodes:
             self.nodes.add(n)
 
     def add_edge(self, e) -> None:
