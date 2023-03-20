@@ -24,7 +24,7 @@ that ~n1~ is the /source/ of the edge and ~n2~ is its /target/.
 [[./graph.png]]
 
 Figure 1 shows a graph with seven nodes labelled 'A' to 'G' and seven edges:
-~(A,B)~, ~(A,C)~ and so on. Becuase no direction is shown along the edges we can
+~(A,B)~, ~(A,C)~ and so on. Because no direction is shown along the edges we can
 assume this is an undirected graph, so there are also edges ~(B,A)~, ~(C,A)~ and
 so on. Because all nodes are reachable by some path, whichever node we start
 from, this graph is said to be /connected/.
