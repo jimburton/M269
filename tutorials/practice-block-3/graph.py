@@ -34,7 +34,7 @@ class Graph:
         """
         Adds a node to the graph.
         """
-        if v not in self.nodes:
+        if n not in self.nodes:
             self.nodes.add(n)
 
     def add_edge(self, e) -> None:
@@ -124,3 +124,6 @@ tree1 = Graph.build({'A', 'B', 'C', 'D', 'E', 'F', 'G'}     # nodes
                     , {('A', 'B'), ('A', 'C'), ('A', 'E')   # edges
                        , ('B', 'D'), ('B', 'F'), ('C', 'G')
                        , ('E', 'F')})
+
+tree_discon = Graph.build({'A', 'B', 'C', 'D', 'E', 'F', 'G'}     # nodes
+                    , {('A', 'C'), ('A', 'F')})
