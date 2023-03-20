@@ -47,6 +47,10 @@ class Graph:
         if e not in self.edges:
             self.edges.add(e)
 
+    #######################
+    # Exercises start here
+    #######################
+
     def disconnected(self) -> set:
         """
         Collects the set of disconnected nodes (those which are not part
