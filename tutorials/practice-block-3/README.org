@@ -13,8 +13,8 @@ The exercises below relate to the following sections of the M269 book: Chapters
 Depth-first Search/.
 
 The implementation of the graph ADT in the file [[./graph.py][graph.py]] is simpler than that in
-the book (Section 17.6). It stores a list of /nodes/ (also called /vertices/),
-which can be values of any type, and a list of /edges/, which are pairs of nodes
+the book (Section 17.6). It stores a set of /nodes/ (also called /vertices/),
+which can be values of any type, and a set of /edges/, which are pairs of nodes
 representing connections in the graph. It is a /directed/ graph, in that an edge
 ~(n1, n2)~ is a connection between ~n1~ to ~n2~ and does not mean there is
 necessarily any connection between ~n2~ and ~n1~. In the latter example we say
