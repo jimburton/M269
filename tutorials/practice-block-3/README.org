@@ -18,6 +18,15 @@ which are pairs of nodes representing connections in the graph. It is a
 ~n1~. In the latter example we say that ~n1~ is the /source/ of the edge and
 ~n2~ is its /target/.
 
+#+CAPTION: Figure 1: Visualisation of a graph
+[[./graph.png]]
+
+Figure 1 shows a graph with seven nodes labelled 'A' to 'G' and seven edges:
+~(A,B)~, ~(A,C)~ and so on. Becuase no direction is shown along the edges we can
+assume this is an undirected graph, so there are also edges ~(B,A)~, ~(C,A)~ and
+so on. Because all nodes are reachable by some path, whichever node we start
+from, this graph is said to be /connected/.
+
 *** Depth-first traversal
 
 A depth-first traversal begins at a given node, ~n~, then selects one of ~n~'s
@@ -142,4 +151,4 @@ PROCEDURE BFS(G, source, target): <type of labels in G>
 END PROCEDURE
 #+END_EXAMPLE
 
-We then need to find the /shortest/ path from source ot target.
+We then need to find the /shortest/ path from source to target.
