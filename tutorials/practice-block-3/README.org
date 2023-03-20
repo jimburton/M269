@@ -25,9 +25,11 @@ that ~n1~ is the /source/ of the edge and ~n2~ is its /target/.
 A depth-first traversal begins at a given node, ~n~, then selects one of ~n~'s
 neighbours and continues in this way until it reaches a node with no
 neighbours, ~p~. It then checks whether the node visited prior to ~p~, ~o~ has any
-neighbours: if it does, it selects one of those and once again continues until
+unvisited neighbours: if it does, it selects one of those and once again continues until
 it reaches a dead end. If ~o~ has no neighbours it carries on reversing along
-the path it took until it finds a previously visited node that has neighbours.
+the path it took until it finds a previously visited node that has unvisited neighbours.
+If this backtracking takes us all the way back to the beginning node and it has no unvisited
+neighbours, the traversal is complete. 
 
 Depth-first traversal can be implemented /recursively/ or /iteratively/ (ie
 with a loop). Iterative implementation commonly use a /stack/.
@@ -78,7 +80,7 @@ Breadth-first traversal is most often implemented /iteratively/ using a
 **** Pseudocode
 
 #+BEGIN_EXAMPLE
-PROCEDURE BFS(G, v): list
+PROCEDURE BFT(G, v): list
   discovered := empty list
   queue := empty queue
   add v to discovered
