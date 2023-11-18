@@ -44,7 +44,7 @@ difference of `{3, 4, 5}` with respect to `{1, 2, 3, 4}` and  is
   exactly the same members (remember that order is unimportant).
 * We can convert a set to a ordinary Python list.
 
-This ADT is expressed in the file `(src/Set.py)`.
+This ADT is expressed in the file (src/Set.py).
 
 ## Implementing the Set ADT
 
