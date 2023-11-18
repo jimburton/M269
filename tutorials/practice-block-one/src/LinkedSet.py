@@ -4,8 +4,7 @@ class LinkedSet(Set):
     """A linked list implementation of the set ADT."""
 
     class Node:
-        """A node in a linked list.
-        """
+        """A node in a linked list."""
         def __init__(self, item: object):
             """Initialise the node with the given item."""
             self.item = item
