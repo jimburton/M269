@@ -44,7 +44,7 @@ difference of `{3, 4, 5}` with respect to `{1, 2, 3, 4}` and  is
   exactly the same members (remember that order is unimportant).
 * We can convert a set to a ordinary Python list.
 
-This ADT is expressed in the file (src/Set.py).
+This ADT is expressed in the file [src/Set.py](src/Set.py).
 
 ## Implementing the Set ADT
 
@@ -135,7 +135,7 @@ while current != None:
 	
 ## Testing
 
-Tests are provided in the file (`src/TestLinkedSet.py`). You should
+Tests are provided in the file [src/TestLinkedSet.py](src/TestLinkedSet.py). You should
 run these often to check your progress. The tests are *unit tests*, a
 standard testing framework which isn't covered in this module. If you
 are using an IDE such as VS Code, PyCharm or IntelliJ, there will be
