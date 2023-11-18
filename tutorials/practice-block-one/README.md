@@ -2,7 +2,7 @@
 
 *Dr James Burton, November 2023*
 
-These exercises build on the code and exercises in the M269 Book in
+These exercises build on the code and exercises in the M269 Book,
 Chapter 6. Familiarity with the ADTs in that chapter and their
 implementations in Python is assumed.
 
@@ -50,23 +50,24 @@ This ADT is expressed in the file [src/Set.py](src/Set.py).
 
 ## Implementing the Set ADT
 
-We will implement the Set ADT using a *linked list*, in the style of
-Section 6.7 from the book. The first item in a linked list is called
-`head`. If `head` is null the list is empty. Each element of one of our
-linked lists is an instance of the `Node` class. A node contains an
-`item`, which is the data, and a pointer to the next node in the list,
-called `next`.  To traverse the list we can start with `head` and
-keep following the `next` pointers until they lead to `None`,
-indicating that this is the end of the list.
+Although there are more efficient ways to do it, we will implement the
+Set ADT using a *linked list*, in the style of Section 6.7 from the
+book. The first item in a linked list is called `head`. If `head` is
+null the list is empty. Each element of one of our linked lists is an
+instance of the `Node` class. A node contains an `item`, which is the
+data, and a pointer to the next node in the list, called `next`.  To
+traverse the list we can start with `head` and keep following the
+`next` pointers until they lead to `None`, indicating that this is the
+end of the list.
 
-Open the file [src/LinkedSet.py](src/LinkedSet.py) to carry out the
-implementation. Several of the methods we need to implement are
-identical, or almost identical, to methods in the `LinkedList` class
-from Section 6.7 of the book. For instance, finding the size of a
-`LinkedSet` is done in exactly the same way as finding the length of a
-`LinkedList`, so rereading that section will help if you need
-pointers. Also, you can see my version of the finished code in the
-`solutions` branch of this repository. 
+Open the file [src/LinkedSet.py](src/LinkedSet.py) to complete the
+exercises. Several of the methods we need to implement are identical,
+or almost identical, to methods in the `LinkedList` class from Section
+6.7 of the book. For instance, finding the size of a `LinkedSet` is
+done in exactly the same way as finding the length of a `LinkedList`,
+so rereading that section will help if you need tips. Also, you
+can see my version of the finished code in the `solutions` branch of
+this repository.
 
 The `size` method, in common with many of the others, requires us to
 *traverse* the collection. This is done by taking a reference to the
@@ -74,19 +75,19 @@ The `size` method, in common with many of the others, requires us to
 end. This is the pattern:
 
 ```python
-current = head
+current = self.head
 while current != None:
 	# do something
 	current = current.next
 ```
 
-As you complete the exercises, test your work by opening it in the
-Python interpreter or by running the tests provided. To run the code
-in the interpreter (otherwise called the REPL) navigate to the
-directory in which the code lives in a terminal and open an
-interactive session. Here's an example of experimenting with the
-`size` method (note that the command to run python on my system is
-`python3`, but yours may be different):
+As you complete the exercises, test your work by experimenting with it
+in the Python interpreter or by running the tests provided. To run the
+code in the interpreter (otherwise called the REPL), navigate to the
+`src` directory in a terminal and open an interactive session. Here's
+an example of experimenting with the `size` method (note that the
+command to run python on my system is `python3`, but yours may be
+different):
 
 ```
 $ python3 -i LinkedSet.py
@@ -128,8 +129,8 @@ To run the automatic tests provided see the [section on testing below](#testing)
 8. Implement the `clone` method, which creates a "shallow" copy of the
    current set. A shallow copy of a collection, *A*, is one in which a
    new collection, *B*, is created then references to every element of
-   *A* is inserted to *B*. A deep copy is one which *copies* of the
-   elements of *A* are inserted to *B*.
+   *A* are inserted to *B*. (A deep copy is one in which *copies* of
+   the elements of *A* are inserted to *B*.)
 9. Implement the `union` method, where the result should contain all
     elements of both sets. One way to do this is to clone the current
     set then loop through the other set inserting elements into the
@@ -139,41 +140,48 @@ To run the automatic tests provided see the [section on testing below](#testing)
 11. Implement the `difference` method, where the result should contain
     those elements of the current set which are not members of the
     other set.
-12. Implement the `remove` method. This one is tricky, and I advise
-    you to think of two cases: the simple case, where the item to
-    remove is equal to the item in `head`, and the more complex case
-    where the item to remove is somewhere further on within the
+12. Implement the `remove` method. This one is quite tricky, and I
+    advise you to think of two cases: the simple case, where the item
+    to remove is equal to the item in `head`, and the more complex
+    case where the item to remove is somewhere further on within the
     set. In the latter case you will remove the item by changing the
-    `next` pointer of the node *before* the target item to point to the
-    node *after* the target item. So, you will need to maintain two
-    pointers in your loop: one to the current item and one to the
-    previous.
+    `next` pointer of the node *before* the target item to point to
+    the node *after* the target item. So, you will need to maintain
+    two pointers in your loop: one to the current item and one to the
+    previous. If the item to be removed is not a member of the set you
+    should raise a `KeyError` like so:
+	```python
+	raise KeyError("item not found")
+	```
 13. Implement the `__eq__` method in [src/Set.py](src/Set.py) for
-    equality between sets. This method is implemented in `Set.py`
-    because it should work in the same way whatever the
-    implementation. `__eq__` is a builtin method that means we can now
-    use the `==` operator on sets. Two sets are considered equal if
-    they contain exactly the same elements, regardless of order.
+    equality between sets. Two sets are considered equal if they
+    contain exactly the same elements, regardless of order. This
+    method is implemented in the superclass `Set.py` because it should
+    work in the same way whatever the implementation. `__eq__` is a
+    builtin method that means we can now use the `==` operator on
+    sets.
 	
 ## Testing
 
-Tests are provided in the file [src/TestLinkedSet.py](src/TestLinkedSet.py). You should
-run these often to check your progress. The tests are *unit tests*, a
-standard testing framework which isn't covered in this module. If you
-are using an IDE such as VS Code, PyCharm or IntelliJ, there will be
-built in support for running these tests from the IDE. If you aren't
-sure how to do this we can discuss it in the tutorial.
+Tests are provided in the file
+[src/TestLinkedSet.py](src/TestLinkedSet.py). You should read these to
+get an idea of how they work, and run them often to check your
+progress. The tests are *unit tests*, a standard testing framework
+which isn't covered in this module. If you are using an IDE such as VS
+Code, PyCharm or IntelliJ, there is built in support for running these
+tests from the IDE. If you aren't sure how to do this we can discuss
+it in the tutorial.
 
-You can however run the tests from the command line. If you navigate
-to the `src` directory in a terminal the following command runs all
-tests:
+ALternatively, you can run the tests from the command line. If you
+navigate to the `src` directory in a terminal the following command
+runs all tests:
 
 ```
 $ python3 -m unittest -v TestLinkedSet.Testing
 ```
 
 You can run a specific test by giving its name. For instance, to run
-the test `test_add_and_size`:
+the first test, `test_add_and_size`:
 
 ```
 $ python3 -m unittest -v TestLinkedSet.Testing.test_add_and_size
