@@ -1,12 +1,14 @@
 # M269 Tutorial: Practice Block One
 
+*Dr James Burton, November 2023*
+
 These exercises build on the code and exercises in the M269 Book in
 Chapter 6. Familiarity with the ADTs in that chapter and their
 implementations in Python is assumed.
 
 ## The Set ADT
 
-A set is an unordered collection of items with no duplicates. As such,
+A *set* is an unordered collection of items with no duplicates. As such,
 it is a good choice of data structure if we know that we don't want
 any duplicate data. In mathematical notation, sets are shown as a
 comma-separated list within braces, e.g. `{1, 2, 3}`.  
@@ -32,38 +34,44 @@ set, *B*, resulting in a third set, *C*. The difference of the set
 `{1, 2, 3, 4}` with respect to the set `{3, 4, 5}` is `{1, 2}`. The
 difference of `{3, 4, 5}` with respect to `{1, 2, 3, 4}` and  is
 `{5}`.
-* Calculate whether two sets are *disjoint*, which is true if they
+* We can calculate whether two sets are *disjoint*, which is true if they
   have no elements in common.
-* Calculate whether one set, *A*, is a *subset* of another, *B*. This
-  is true if and only if all elements of *A* are elements of *B*.
-* Calculate whether one set, *A*, is a *superset* of another, *B*. This
+* We can calculate whether one set, *A*, is a *subset* of another, *B*. This
+  is true if and only if all elements of *A* are elements of *B*. *B*
+  might also contain other elements, but it contains at least the
+  elements of *A*. 
+* We can calculate whether one set, *A*, is a *superset* of another, *B*. This
   is true if and only if all elements of *B* are elements of *A*.
-* Calculate whether two sets are *equal*. This is true if they have
+* We can calculate whether two sets are *equal*. This is true if they have
   exactly the same members (remember that order is unimportant).
-* Convert a set to a ordinary Python list.
+* We can convert a set to a ordinary Python list.
 
-This ADT is expressed in the file (`src/Set.py`).
+This ADT is expressed in the file [src/Set.py](src/Set.py).
 
 ## Implementing the Set ADT
 
 We will implement the Set ADT using a *linked list*, in the style of
 Section 6.7 from the book. The first item in a linked list is called
 `head`. If `head` is null the list is empty. Each element of one of our
-linked lists is instance of the `Node` class. A node contains an
+linked lists is an instance of the `Node` class. A node contains an
 `item`, which is the data, and a pointer to the next node in the list,
 called `next`.  To traverse the list we can start with `head` and
 keep following the `next` pointers until they lead to `None`,
 indicating that this is the end of the list.
 
-Open the file (`src/LinkedSet.py`) to carry out the
+Open the file [src/LinkedSet.py](src/LinkedSet.py) to carry out the
 implementation. Several of the methods we need to implement are
 identical, or almost identical, to methods in the `LinkedList` class
 from Section 6.7 of the book. For instance, finding the size of a
 `LinkedSet` is done in exactly the same way as finding the length of a
-`LinkedList`. The `size` method, in common with many of the others,
-requires us to *traverse* the collection. This is done by taking a
-reference to the `head` then calling the `next` pointer repeatedly
-until we reach the end. This is the pattern:
+`LinkedList`, so rereading that section will help if you need
+pointers. Also, you can see my version of the finished code in the
+`solutions` branch of this repository. 
+
+The `size` method, in common with many of the others, requires us to
+*traverse* the collection. This is done by taking a reference to the
+`head` then calling the `next` pointer repeatedly until we reach the
+end. This is the pattern:
 
 ```python
 current = head
@@ -71,6 +79,25 @@ while current != None:
 	# do something
 	current = current.next
 ```
+
+As you complete the exercises, test your work by opening it in the
+Python interpreter or by running the tests provided. To run the code
+in the interpreter (otherwise called the REPL) navigate to the
+directory in which the code lives in a terminal and open an
+interactive session. Here's an example of experimenting with the
+`size` method (note that the command to run python on my system is
+`python3`, but yours may be different):
+
+```
+$ python3 -i LinkedSet.py
+>>> s1 = LinkedSet()
+>>> s1.size()
+0
+>>> print(s1)
+[]
+```
+
+To run the automatic tests provided see the [section on testing below](#testing).
 
 1. Implement the `size` method. You can do this by initialising a
    counter then using the pattern above to increment it for every item
@@ -93,43 +120,44 @@ while current != None:
    as you encounter an element which is not in the other set.
 6. Implement the `tolist` method. No hints for this one, it should be
    easy :-)
-7. Implement the `issuperset` method. Similar to the previous problem
-   but in this case we want to loop through the *other* set. Note that
-   you **cannot** refer to `other.head` -- why? To work around this
-   convert the other set to a list and loop through that.
-8. Implement the `clone` method. Make a new set then loop through the
-   current set adding items to the new one.
-9. Implement the `clone` method, which creates a "shallow" copy of the
-   current set. (A shallow copy of a collection, *A*, is one in which a
+7. Implement the `issuperset` method. Similar to the `issubset`
+   problem but in this case we want to loop through the *other*
+   set. Note that you **cannot** use the familiar pattern and refer to
+   `other.head` -- why? To work around this, convert the other set to a
+   list and loop through that.
+8. Implement the `clone` method, which creates a "shallow" copy of the
+   current set. A shallow copy of a collection, *A*, is one in which a
    new collection, *B*, is created then references to every element of
    *A* is inserted to *B*. A deep copy is one which *copies* of the
-   elements of *A* are inserted to *B*.)
-10. Implement the `union` method, where the result should contain all
+   elements of *A* are inserted to *B*.
+9. Implement the `union` method, where the result should contain all
     elements of both sets. One way to do this is to clone the current
     set then loop through the other set inserting elements into the
     clone.
-11. Implement the `intersection` method, where the result should
+10. Implement the `intersection` method, where the result should
     contain just those elements that are in both sets.
-12. Implement the `difference` method, where the result should contain
+11. Implement the `difference` method, where the result should contain
     those elements of the current set which are not members of the
     other set.
-13. Implement the `remove` method. This one is tricky, and I advise
-    you to think of two cases: the simple case where the item to
+12. Implement the `remove` method. This one is tricky, and I advise
+    you to think of two cases: the simple case, where the item to
     remove is equal to the item in `head`, and the more complex case
     where the item to remove is somewhere further on within the
     set. In the latter case you will remove the item by changing the
-    `next` pointer of the node before the target item to point to the
-    node after the target item. So, you will need to maintain two
+    `next` pointer of the node *before* the target item to point to the
+    node *after* the target item. So, you will need to maintain two
     pointers in your loop: one to the current item and one to the
     previous.
-14. Implement the `__eq__` method for equality between sets. This is a
-    builtin method that means we can now use the `==` operator on
-    sets. Two sets are equal if they contain exactly the same
-    elements, regardless of order.
+13. Implement the `__eq__` method in [src/Set.py](src/Set.py) for
+    equality between sets. This method is implemented in `Set.py`
+    because it should work in the same way whatever the
+    implementation. `__eq__` is a builtin method that means we can now
+    use the `==` operator on sets. Two sets are considered equal if
+    they contain exactly the same elements, regardless of order.
 	
 ## Testing
 
-Tests are provided in the file (`src/TestLinkedSet.py`). You should
+Tests are provided in the file [src/TestLinkedSet.py](src/TestLinkedSet.py). You should
 run these often to check your progress. The tests are *unit tests*, a
 standard testing framework which isn't covered in this module. If you
 are using an IDE such as VS Code, PyCharm or IntelliJ, there will be
@@ -144,8 +172,8 @@ tests:
 $ python3 -m unittest -v TestLinkedSet.Testing
 ```
 
-You can also run a specific test by giving its name. For instance, to
-run the test `test_add_and_size`:
+You can run a specific test by giving its name. For instance, to run
+the test `test_add_and_size`:
 
 ```
 $ python3 -m unittest -v TestLinkedSet.Testing.test_add_and_size
