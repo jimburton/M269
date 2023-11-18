@@ -93,6 +93,8 @@ $ python3 -i LinkedSet.py
 >>> s1 = LinkedSet()
 >>> s1.size()
 0
+>>> print(s1)
+[]
 ```
 
 To run the automatic tests provided see the [section on testing below](#testing).
