@@ -6,7 +6,7 @@ implementations in Python is assumed.
 
 ## The Set ADT
 
-A set is an unordered collection of items with no duplicates. As such,
+A *set* is an unordered collection of items with no duplicates. As such,
 it is a good choice of data structure if we know that we don't want
 any duplicate data. In mathematical notation, sets are shown as a
 comma-separated list within braces, e.g. `{1, 2, 3}`.  
@@ -32,17 +32,19 @@ set, *B*, resulting in a third set, *C*. The difference of the set
 `{1, 2, 3, 4}` with respect to the set `{3, 4, 5}` is `{1, 2}`. The
 difference of `{3, 4, 5}` with respect to `{1, 2, 3, 4}` and  is
 `{5}`.
-* Calculate whether two sets are *disjoint*, which is true if they
+* We can calculate whether two sets are *disjoint*, which is true if they
   have no elements in common.
-* Calculate whether one set, *A*, is a *subset* of another, *B*. This
-  is true if and only if all elements of *A* are elements of *B*.
-* Calculate whether one set, *A*, is a *superset* of another, *B*. This
+* We can calculate whether one set, *A*, is a *subset* of another, *B*. This
+  is true if and only if all elements of *A* are elements of *B*. *B*
+  might also contain other elements, but it contains at least the
+  elements of *A*. 
+* We can calculate whether one set, *A*, is a *superset* of another, *B*. This
   is true if and only if all elements of *B* are elements of *A*.
-* Calculate whether two sets are *equal*. This is true if they have
+* We can calculate whether two sets are *equal*. This is true if they have
   exactly the same members (remember that order is unimportant).
-* Convert a set to a ordinary Python list.
+* We can convert a set to a ordinary Python list.
 
-This ADT is expressed in the file (`src/Set.py`).
+This ADT is expressed in the file `(src/Set.py)`.
 
 ## Implementing the Set ADT
 
