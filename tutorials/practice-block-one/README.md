@@ -51,19 +51,19 @@ This ADT is expressed in the file [src/Set.py](src/Set.py).
 We will implement the Set ADT using a *linked list*, in the style of
 Section 6.7 from the book. The first item in a linked list is called
 `head`. If `head` is null the list is empty. Each element of one of our
-linked lists is instance of the `Node` class. A node contains an
+linked lists is an instance of the `Node` class. A node contains an
 `item`, which is the data, and a pointer to the next node in the list,
 called `next`.  To traverse the list we can start with `head` and
 keep following the `next` pointers until they lead to `None`,
 indicating that this is the end of the list.
 
-Open the file (`src/LinkedSet.py`) to carry out the
+Open the file [src/LinkedSet.py](src/LinkedSet.py) to carry out the
 implementation. Several of the methods we need to implement are
 identical, or almost identical, to methods in the `LinkedList` class
 from Section 6.7 of the book. For instance, finding the size of a
 `LinkedSet` is done in exactly the same way as finding the length of a
 `LinkedList`, so rereading that section will help if you need
-pointers. Also, you can see my versionof the finished code in the
+pointers. Also, you can see my version of the finished code in the
 `solutions` branch of this repository. 
 
 The `size` method, in common with many of the others, requires us to
@@ -77,6 +77,21 @@ while current != None:
 	# do something
 	current = current.next
 ```
+
+As you complete the exercises, test your work by opening it in the
+Python interpreter or by running the tests provided. To run the code
+in the interpreter (otherwise called the REPL) navigate to the
+directory in which the code lives in a terminal and open an interactive
+session. Here's an example of experimenting with the `size` method:
+
+```
+$ python -i LinkedSet.py
+>>> s1 = LinkedSet()
+>>> s1.size()
+0
+```
+
+To run the automatic tests provided see the [section on testing below](#testing).
 
 1. Implement the `size` method. You can do this by initialising a
    counter then using the pattern above to increment it for every item
