@@ -1,5 +1,7 @@
 # M269 Tutorial: Practice Block One
 
+*Dr James Burton, November 2023*
+
 These exercises build on the code and exercises in the M269 Book in
 Chapter 6. Familiarity with the ADTs in that chapter and their
 implementations in Python is assumed.
@@ -81,11 +83,13 @@ while current != None:
 As you complete the exercises, test your work by opening it in the
 Python interpreter or by running the tests provided. To run the code
 in the interpreter (otherwise called the REPL) navigate to the
-directory in which the code lives in a terminal and open an interactive
-session. Here's an example of experimenting with the `size` method:
+directory in which the code lives in a terminal and open an
+interactive session. Here's an example of experimenting with the
+`size` method (note that the command to run python on my system is
+`python3`, but yours may be different):
 
 ```
-$ python -i LinkedSet.py
+$ python3 -i LinkedSet.py
 >>> s1 = LinkedSet()
 >>> s1.size()
 0
@@ -114,39 +118,40 @@ To run the automatic tests provided see the [section on testing below](#testing)
    as you encounter an element which is not in the other set.
 6. Implement the `tolist` method. No hints for this one, it should be
    easy :-)
-7. Implement the `issuperset` method. Similar to the previous problem
-   but in this case we want to loop through the *other* set. Note that
-   you **cannot** refer to `other.head` -- why? To work around this
-   convert the other set to a list and loop through that.
-8. Implement the `clone` method. Make a new set then loop through the
-   current set adding items to the new one.
-9. Implement the `clone` method, which creates a "shallow" copy of the
-   current set. (A shallow copy of a collection, *A*, is one in which a
+7. Implement the `issuperset` method. Similar to the `issubset`
+   problem but in this case we want to loop through the *other*
+   set. Note that you **cannot** use the familiar pattern and refer to
+   `other.head` -- why? To work around this, convert the other set to a
+   list and loop through that.
+8. Implement the `clone` method, which creates a "shallow" copy of the
+   current set. A shallow copy of a collection, *A*, is one in which a
    new collection, *B*, is created then references to every element of
    *A* is inserted to *B*. A deep copy is one which *copies* of the
-   elements of *A* are inserted to *B*.)
-10. Implement the `union` method, where the result should contain all
+   elements of *A* are inserted to *B*.
+9. Implement the `union` method, where the result should contain all
     elements of both sets. One way to do this is to clone the current
     set then loop through the other set inserting elements into the
     clone.
-11. Implement the `intersection` method, where the result should
+10. Implement the `intersection` method, where the result should
     contain just those elements that are in both sets.
-12. Implement the `difference` method, where the result should contain
+11. Implement the `difference` method, where the result should contain
     those elements of the current set which are not members of the
     other set.
-13. Implement the `remove` method. This one is tricky, and I advise
-    you to think of two cases: the simple case where the item to
+12. Implement the `remove` method. This one is tricky, and I advise
+    you to think of two cases: the simple case, where the item to
     remove is equal to the item in `head`, and the more complex case
     where the item to remove is somewhere further on within the
     set. In the latter case you will remove the item by changing the
-    `next` pointer of the node before the target item to point to the
-    node after the target item. So, you will need to maintain two
+    `next` pointer of the node *before* the target item to point to the
+    node *after* the target item. So, you will need to maintain two
     pointers in your loop: one to the current item and one to the
     previous.
-14. Implement the `__eq__` method for equality between sets. This is a
-    builtin method that means we can now use the `==` operator on
-    sets. Two sets are equal if they contain exactly the same
-    elements, regardless of order.
+13. Implement the `__eq__` method in [src/Set.py](src/Set.py) for
+    equality between sets. This method is implemented in `Set.py`
+    because it should work in the same way whatever the
+    implementation. `__eq__` is a builtin method that means we can now
+    use the `==` operator on sets. Two sets are considered equal if
+    they contain exactly the same elements, regardless of order.
 	
 ## Testing
 
@@ -165,8 +170,8 @@ tests:
 $ python3 -m unittest -v TestLinkedSet.Testing
 ```
 
-You can also run a specific test by giving its name. For instance, to
-run the test `test_add_and_size`:
+You can run a specific test by giving its name. For instance, to run
+the test `test_add_and_size`:
 
 ```
 $ python3 -m unittest -v TestLinkedSet.Testing.test_add_and_size
