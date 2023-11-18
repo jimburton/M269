@@ -39,8 +39,6 @@ class LinkedSet(Set):
         self.head = n
 
     def isdisjoint(self, other: Set) -> bool:
-        if self == other:
-            return False
         current = self.head
         while current != None:
             if other.member(current.item):
