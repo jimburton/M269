@@ -50,6 +50,12 @@ This ADT is expressed in the file [src/Set.py](src/Set.py).
 
 ## Implementing the Set ADT
 
+Get a copy of the code by downloading a zip file from the [home
+page](/) of this repository, clicking on the green **code** button. If
+you are a git user, cloning the repository is the way to go. This
+tutorial can be found within the repository at
+[/tutorials/practice-clock-one](/tutorials/practice-clock-one).
+
 Although there are more efficient ways to do it, we will implement the
 Set ADT using a *linked list*, in the style of Section 6.7 from the
 book. The first item in a linked list is called `head`. If `head` is
@@ -61,13 +67,13 @@ traverse the list we can start with `head` and keep following the
 end of the list.
 
 Open the file [src/LinkedSet.py](src/LinkedSet.py) to complete the
-exercises. Several of the methods we need to implement are identical,
-or almost identical, to methods in the `LinkedList` class from Section
-6.7 of the book. For instance, finding the size of a `LinkedSet` is
-done in exactly the same way as finding the length of a `LinkedList`,
-so rereading that section will help if you need tips. Also, you
-can see my version of the finished code in the `solutions` branch of
-this repository.
+exercises. Several of the methods we need to implement are very
+similar, or almost identical, to methods in the `LinkedList` class
+from Section 6.7 of the book. For instance, finding the size of a
+`LinkedSet` is done in the same way as finding the length of a
+`LinkedList`, so rereading that section will help if you need
+tips. Also, you can see my version of the finished code in the
+`solutions` branch of this repository.
 
 The `size` method, in common with many of the others, requires us to
 *traverse* the collection. This is done by taking a reference to the
@@ -128,9 +134,10 @@ To run the automatic tests provided see the [section on testing below](#testing)
    list and loop through that.
 8. Implement the `clone` method, which creates a "shallow" copy of the
    current set. A shallow copy of a collection, *A*, is one in which a
-   new collection, *B*, is created then references to every element of
-   *A* are inserted to *B*. (A deep copy is one in which *copies* of
-   the elements of *A* are inserted to *B*.)
+   new collection, *B*, is created, then references to every element
+   of *A* are inserted to *B*. (A deep copy is one in which *copies*
+   of the elements of *A*, rather than references to them, are
+   inserted to *B*.)
 9. Implement the `union` method, where the result should contain all
     elements of both sets. One way to do this is to clone the current
     set then loop through the other set inserting elements into the
@@ -164,15 +171,15 @@ To run the automatic tests provided see the [section on testing below](#testing)
 ## Testing
 
 Tests are provided in the file
-[src/TestLinkedSet.py](src/TestLinkedSet.py). You should read these to
+[src/TestLinkedSet.py](src/TestLinkedSet.py). You can read these to
 get an idea of how they work, and run them often to check your
-progress. The tests are *unit tests*, a standard testing framework
+progress. The tests are *unit tests*, a standard testing methodology
 which isn't covered in this module. If you are using an IDE such as VS
 Code, PyCharm or IntelliJ, there is built in support for running these
 tests from the IDE. If you aren't sure how to do this we can discuss
 it in the tutorial.
 
-ALternatively, you can run the tests from the command line. If you
+Alternatively, you can run the tests from the command line. If you
 navigate to the `src` directory in a terminal the following command
 runs all tests:
 
@@ -190,9 +197,10 @@ $ python3 -m unittest -v TestLinkedSet.Testing.test_add_and_size
 
 ## Discussion
 
-1. What is the time complexity of `member`?
-2. What is the time complexity of `intersection`?
-3. The fact that our implementation uses a linked list means it is not
+1. What is the importance of the `clone` method?
+2. What is the time complexity of `member`?
+3. What is the time complexity of `intersection`?
+4. The fact that our implementation uses a linked list means it is not
    very efficient. Could we use a more efficient data structure to
    implement the Set ADT? Bear in mind that we can't guarantee that
    the objects in our set can be ordered. If we could find a more

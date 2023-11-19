@@ -12,6 +12,14 @@ class Set:
     def add(self, item: object) -> None:
         """Add item to the set. No duplicates allowed."""
         pass
+
+    def tolist(self) -> [object]:
+        """Convert the set to a list of its members."""
+        pass
+
+    def clone(self) -> 'Set':
+        """Create a shallow copy of this set."""
+        pass
     
     def isdisjoint(self, other: 'Set') -> bool:
         """Returns True if the other set is disjoint from this one."""
@@ -20,17 +28,9 @@ class Set:
     def issubset(self, other: 'Set') -> bool:
         """Returns True if this set is a subset of the other one."""
         pass
-
-    def tolist(self) -> [object]:
-        """Convert the set to a list of its members."""
-        pass
     
     def issuperset(self, other: 'Set') -> bool:
         """Returns True if this set is a superset of the other one."""
-        pass
-
-    def clone(self) -> 'Set':
-        """Create a shallow copy of this set."""
         pass
 
     def union(self, other: 'Set') -> 'Set':
