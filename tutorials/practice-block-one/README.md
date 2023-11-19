@@ -4,7 +4,7 @@
 
 These exercises build on the code and exercises in the M269 Book,
 Chapter 6. Familiarity with the ADTs in that chapter and their
-implementations in Python is assumed.
+implementations in Python, especially that of the *linked list*, is assumed.
 
 ## The Set ADT
 
