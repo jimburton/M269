@@ -54,7 +54,7 @@ Get a copy of the code by downloading a zip file from the [home
 page](/) of this repository, clicking on the green **code** button. If
 you are a git user, cloning the repository is the way to go. This
 tutorial can be found within the repository at
-[/tutorials/practice-clock-one](/tutorials/practice-clock-one).
+[/tutorials/practice-block-one](/tutorials/practice-block-one).
 
 Although there are more efficient ways to do it, we will implement the
 Set ADT using a *linked list*, in the style of Section 6.7 from the
