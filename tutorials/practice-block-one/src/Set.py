@@ -59,4 +59,4 @@ class Set:
 
     def __eq__(self, other: 'Set') -> bool:
         """Equality between sets."""
-        return self.difference(other).size() == 0 and other.difference(self).size() == 0 
+        pass 
