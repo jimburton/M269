@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 
 **/*.~undo-tree~
+tutorials/practice-block-one/.vscode/settings.json
