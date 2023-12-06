@@ -88,8 +88,8 @@ instances of the same class. These are `__lt__` ("less than"),
    name only. 
 
 2. Implement the *Bubble Sort* algorithm in the file
-   [](src/Sorting.py). Do so by completing the function with this
-   signature:
+   [](src/Sorting.py). Do so by writing a function at the top level
+   (ie not inside any class) with this signature:
    
    ```python
    def bubble_sort(inlist: list) -> list:
@@ -122,7 +122,7 @@ instances of the same class. These are `__lt__` ("less than"),
    end procedure
    ```
 
-   Read the pseudocode carefully and make sure you understand
+   Read this pseudocode carefully and make sure you understand
    it. Hopefully, it should be pretty easy for you to convert it to
    Python. But use the version below, which incorporates a simple
    optimisation that improves performance in the best case
@@ -200,18 +200,21 @@ default value.
     between `Person` objects as before. If `key` was supplied, we can
     make use of it. Say the function passed in as the key was
     `Person.date_of_birth` and we want to use it to compare two `Person`
-    objects, `n1` and `n2` -- we need to get hold of the *actual*
-    versions of the method that are defined on `n1` and `n2`. We can
-    do this using the built in `getattr` function:
+    objects, `n1` and `n2`. There are two ways to call an instance
+    method (ie one that takes `self` as its first argument) -- the
+    usual way, which would be `n1.fullname()`, or we can write
+    `Person.fullname(n1)`, passing in the object instance (`self`)
+    explicitly. Since the method we need is bound to `key` we can
+    write something like
 	
 	```python
-	n1_dob_func = getattr(n1, key.__name__)
-	n2_dob_func = getattr(n2, key.__name__)
+	k1 = key(obj1)
+	k2 = key(obj2)
 	```
 
-	Now we can call these methods just by putting brackets after their
-    name, e.g. `n1_dob_func()`. After making these changes the tests
-    `test_sort_fullname` and `test_sort_dob` should pass. 
+	where `obj1` and `obj2` are elements of the list, then make the
+    comparison between `k1` and `k2`. After making these changes the
+    tests `test_sort_fullname` and `test_sort_dob` should pass.
 
 5.  Another common way to modify sorting functions is by supplying a
     *comparator function*. This is a function that takes two objects,
@@ -243,10 +246,10 @@ default value.
     working the test `test_sort_char_pred` should pass.
 	
 7.  There is a lot of repetition between `o_pred` and
-    `char_pred`. Change the definition of `o_pred` so that it returns
-    a call to `char_pred`. When you have done this you will also need
-    to change the function `sort_o_pred`. It currently gives the name
-    of the function object `o_pred` and looks like this:
+    `char_pred`. Change the definition of `o_pred` so that it calls
+    `char_pred`. When you have done this you will also need to change
+    the function `sort_o_pred`. It currently gives the name of the
+    function object `o_pred` and looks like this:
 	
 	```python
 	return bubble_sort_with_key(people, comp=cmp_to_key(o_pred))
@@ -290,11 +293,9 @@ default value.
 	arity = len(inspect.signature(comp).parameters)
 	```
 	
-	If `arity` is 1, proceed as before. If it is 2 there is no need to
-    use `getattr` to retrieve an instance method. We can simply treat
-    `key` as a function and pass in its two arguments, the objects to
-    be compared. Recall that the result of this function will be an
-    int which is either -1, 0 or 1. 
+	If `arity` is 1, proceed as before. If it is 2 then we pass in its
+    two arguments, the objects to be compared. Recall that the result
+    of this function will be an int which is either -1, 0 or 1.
 	
 	Remove the calls to `cmp_to_key` from `sort_o_pred` and
     `sort_char_pred` and see whether the tests still pass. 
