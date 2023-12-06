@@ -88,8 +88,8 @@ instances of the same class. These are `__lt__` ("less than"),
    name only. 
 
 2. Implement the *Bubble Sort* algorithm in the file
-   [](src/Sorting.py). Do so by writing a function at the top level
-   (ie not inside any class) with this signature:
+   [](src/Sorting.py). Do so by completing the function with this
+   signature:
    
    ```python
    def bubble_sort(inlist: list) -> list:
@@ -122,7 +122,7 @@ instances of the same class. These are `__lt__` ("less than"),
    end procedure
    ```
 
-   Read this pseudocode carefully and make sure you understand
+   Read the pseudocode carefully and make sure you understand
    it. Hopefully, it should be pretty easy for you to convert it to
    Python. But use the version below, which incorporates a simple
    optimisation that improves performance in the best case
@@ -212,12 +212,6 @@ default value.
 	Now we can call these methods just by putting brackets after their
     name, e.g. `n1_dob_func()`. After making these changes the tests
     `test_sort_fullname` and `test_sort_dob` should pass. 
-	
-	(NB: in the function `sort_o_pred` which is written for you, we
-    need to convert `o_pred` from a comparator function to a simple
-    selector function like the ones we've used so far,
-    e.g. `Person.fullname`. This is the reason for the use of the
-    `comp_to_key` function.)
 
 5.  Another common way to modify sorting functions is by supplying a
     *comparator function*. This is a function that takes two objects,
@@ -233,6 +227,12 @@ default value.
     that it does this. When you have that working, the test
     `test_sort_o_pred` should pass.
 	
+	(NB: in the function `sort_o_pred` which is written for you, we
+    need to convert `o_pred` from a comparator function to a simple
+    selector function like the ones we've used so far,
+    e.g. `Person.fullname`. This is the reason for the use of the
+    `cmp_to_key` function.)
+	
 6.  Rather than hardcoding the character we want to order by, we want
     the flexibility to order by any character. Complete the function
     `char_pred` to enable that. This function should return a
@@ -243,10 +243,10 @@ default value.
     working the test `test_sort_char_pred` should pass.
 	
 7.  There is a lot of repetition between `o_pred` and
-    `char_pred`. Change the definition of `o_pred` so that it calls
-    `char_pred`. When you have done this you will also need to change
-    the function `sort_o_pred`. It currently gives the name of the
-    function object `o_pred` and looks like this:
+    `char_pred`. Change the definition of `o_pred` so that it returns
+    a call to `char_pred`. When you have done this you will also need
+    to change the function `sort_o_pred`. It currently gives the name
+    of the function object `o_pred` and looks like this:
 	
 	```python
 	return bubble_sort_with_key(people, comp=cmp_to_key(o_pred))

@@ -17,7 +17,7 @@ class Testing(unittest.TestCase):
     def test_sort_basic(self):
         """Test that we can sort using the default method.
         """
-        p = sort_builtin(self.people.copy())
+        p = sort_basic(self.people.copy())
         result = "[William Burroughs, Neal Cassady, Gregory Corso, Allen Ginsberg, Hubert Huncke, Jack Kerouac, Gary Snyder]"
         self.assertEqual(str(p), result)
 
@@ -35,10 +35,10 @@ class Testing(unittest.TestCase):
         result = "[William Burroughs, Hubert Huncke, Jack Kerouac, Neal Cassady, Allen Ginsberg, Gregory Corso, Gary Snyder]"
         self.assertEqual(str(p), result)
 
-    def test_sort_opred(self):
+    def test_sort_o_pred(self):
         """Test that we can sort by the occurence of the character 'o'.
         """
-        p = sort_opred(self.people.copy())
+        p = sort_o_pred(self.people.copy())
         result = "[Gregory Corso, Jack Kerouac, William Burroughs, Hubert Huncke, Gary Snyder, Neal Cassady, Allen Ginsberg]"
         self.assertEqual(str(p), result)
 

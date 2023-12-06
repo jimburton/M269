@@ -41,29 +41,3 @@ class Person:
         """ This method is called when objects are passed to the `str' method."""
         return self.__str__()
     
-    def __eq__(self, other: 'Person') -> bool:
-        """ Compare two Person objects for equality. Two Person objects are equal
-            if their first and last names are equal.
-        """
-        return self.first_name == other.first_name and self.last_name == other.last_name
-
-    def __le__(self, other: 'Person') -> bool:
-        """ Returns true is self is less than or equal to the other. One Person
-            object is less than or equal to another if its last name is (lexicographically)
-            less than or equal to the last name of the other.
-        """
-        return self.last_name <= other.last_name
-        
-    def __lt__(self, other: 'Person') -> bool:
-        """ Returns true is self is less than the other. One Person
-            object is less than another if its last name is (lexicographically)
-            less than the last name of the other.
-        """
-        return self.last_name < other.last_name
-
-    def __gt__(self, other: 'Person') -> bool:
-        """ Returns true is self is greater than the other. One Person
-            object is greater than another if its last name is (lexicographically)
-            greater than the last name of the other.
-        """
-        return self.last_name > other.last_name
