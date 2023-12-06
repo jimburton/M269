@@ -44,9 +44,9 @@ def bubble_sort_with_key(inlist: list, key=None) -> list:
                     inlist[j], inlist[j+1] = inlist[j+1], inlist[j]
                     swapped = True
             else:
-                x_func = getattr(inlist[j], key.__name__)
-                y_func = getattr(inlist[j+1], key.__name__)
-                if x_func() > y_func():
+                k1 = key(inlist[j])
+                k2 = key(inlist[j+1])
+                if k1 > k2:
                     inlist[j], inlist[j+1] = inlist[j+1], inlist[j]
                     swapped = True
         if not swapped:
@@ -72,9 +72,9 @@ def bubble_sort_all_features(inlist: list, key=None) -> list:
             else:
                 arity = len(inspect.signature(key).parameters)
                 if arity == 1: # it's a method call
-                    x_func = getattr(inlist[j], key.__name__)
-                    y_func = getattr(inlist[j+1], key.__name__)
-                    if x_func() > y_func():
+                    k1 = key(inlist[j])
+                    k2 = key(inlist[j+1])
+                    if k1 > k2:
                         inlist[j], inlist[j+1] = inlist[j+1], inlist[j]
                         swapped = True
                 elif arity == 2: # it's a comparator function
