@@ -1,49 +1,49 @@
 from functools import cmp_to_key
 import inspect 
-from datetime import datetime
+from Person import Person
 
-class Name:
-    first_name: str
-    last_name:  str
-    dob:        datetime
-
-    def __init__(self, first_name: str, last_name: str, dob: datetime):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.dob = dob
-
-    def firstname(self) -> str:
-        return self.first_name
-
-    def lastname(self) -> str:
-        return self.last_name
-    
-    def fullname(self) -> str:
-        return self.first_name + " " + self.last_name
-
-    def date_of_birth(self) -> datetime:
-        return self.dob
-    
-    def __eq__(self, other: 'Name') -> bool:
-        return self.first_name == other.first_name and self.last_name == other.last_name
-
-    def __le__(self, other: 'Name') -> bool:
-        return self.last_name <= other.last_name
-        
-    def __lt__(self, other: 'Name') -> bool:
-        return self.last_name < other.last_name
-
-    def __str__(self) -> str:
-        return self.fullname()
-
-    def __repr__(self) -> str:
-        return self.__str__()
-
-def bubble_sort(inlist: list, comp=None) -> list:
+def bubble_sort_no_key(inlist: list, key=None) -> list:
     n = len(inlist)
-    swapped = False
     # Traverse the list
-    for i in range(n-1):
+    for i in range(0, n-1):
+        swapped = False
+        # Last i elements are already in place
+        for j in range(0, n-i-1):
+            if inlist[j] > inlist[j+1]:
+                inlist[j], inlist[j+1] = inlist[j+1], inlist[j]
+                swapped = True
+        if not swapped:
+            # if we haven't needed to make a single swap, we can end.
+            break
+    return inlist
+
+def bubble_sort_with_key(inlist: list, key=None) -> list:
+    n = len(inlist)
+    # Traverse the list
+    for i in range(0, n-1):
+        swapped = False
+        # Last i elements are already in place
+        for j in range(0, n-i-1):
+            if key == None:
+                if inlist[j] > inlist[j+1]:
+                    inlist[j], inlist[j+1] = inlist[j+1], inlist[j]
+                    swapped = True
+            else:
+                x_func = getattr(inlist[j], key.__name__)
+                y_func = getattr(inlist[j+1], key.__name__)
+                if x_func() > y_func():
+                    inlist[j], inlist[j+1] = inlist[j+1], inlist[j]
+                    swapped = True
+        if not swapped:
+            # if we haven't needed to make a single swap, we can end.
+            break
+    return inlist
+
+def bubble_sort_all_features(inlist: list, comp=None) -> list:
+    n = len(inlist)
+    # Traverse the list
+    for i in range(0, n-1):
+        swapped = False
         # Last i elements are already in place
         for j in range(0, n-i-1):
             if comp == None:
@@ -68,17 +68,17 @@ def bubble_sort(inlist: list, comp=None) -> list:
             # if we haven't needed to make a single swap, we can end.
             break
     return inlist
-           
-def sort_builtin(people: list) -> list:
-    return bubble_sort(people)
+
+def sort_basic(people: list) -> list:
+    return bubble_sort_no_key(people)
 
 def sort_fullname(people: list) -> list:
-    return bubble_sort(people, comp=Name.fullname)
+    return bubble_sort_with_key(people, comp=Person.fullname)
 
 def sort_dob(people: list) -> list:
-    return bubble_sort(people, comp=Name.date_of_birth)
+    return bubble_sort_with_key(people, comp=Person.date_of_birth)
 
-def o_pred(n1: Name, n2: Name) -> int:
+def o_pred(n1: Person, n2: Person) -> int:
     if 'o' in n1.fullname() and not 'o' in n2.fullname():
         return -1
     elif 'o' in n1.fullname() and 'o' in n2.fullname():
@@ -93,14 +93,14 @@ def o_pred(n1: Name, n2: Name) -> int:
     else:
         return 0
 
-def o_pred_new() -> int:
+def o_pred_using_char_pred() -> int:
     return char_pred('o')
 
-def sort_opred(people: list) -> list:
-    return bubble_sort(people, comp=o_pred_new())
+def sort_o_pred(people: list) -> list:
+    return bubble_sort_with_key(people, comp=cmp_to_key(o_pred_using_char_pred()))
 
 def char_pred(c: str):
-    def res (n1: Name, n2: Name) -> int:
+    def res (n1: Person, n2: Person) -> int:
         if c in n1.fullname() and not c in n2.fullname():
             return -1
         elif c in n1.fullname() and c in n2.fullname():
@@ -117,5 +117,5 @@ def char_pred(c: str):
     return res
 
 def sort_char_pred(people: list, c: str) -> list:
-    return bubble_sort(people, comp=char_pred(c))
+    return bubble_sort_all_features(people, comp=char_pred(c))
 

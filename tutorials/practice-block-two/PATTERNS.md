@@ -22,11 +22,13 @@ and behaviour of two dimensional geometric shapes:
 
 ```python
 class Shape:
-		
+	""" An abstract class for 2D geometric shapes."""
 	def area(self) -> float:
+		""" Calculate the area of this object."""
 		pass
 		
 	def perimeter(self) -> float:
+		""" Calculate the perimeter of this object."""
 		pass
 ```
 
@@ -51,7 +53,7 @@ shapes.
 ```python
 class Circle(Shape):
 	
-	radius: int
+	radius: int # The radius of this circle.
 	
 	__init (self, radius: int):
 		self.radius = radius
@@ -95,7 +97,7 @@ and perimeter of circles. Here's our next shape:
 ```python
 class Square(Shape):
 	
-	size: int
+	size: int # The size of this square.
 	
 	__init__ (self, size: int):
 		this.size = size
@@ -147,16 +149,17 @@ sandwiches will have a price and a description.
 
 ```python
 class Sandwich():
-
+	""" The base class for sandwishes."""
+	
 	cost: int # the cost in pennies
 	description: string # the description
 	
 	def cost(self) -> int:
-		# get the cost in pennies
+		""" Get the cost in pennies."""
 		pass
 		
 	def describe(self) -> string:
-		# get the description of the sandwich
+		""" Get the description of the sandwich."""
 		pass
 ```
 
@@ -176,22 +179,14 @@ add data and behaviour to objects dynamically. The idea is that
 we create a subclass of sandwich which "wraps" or decorates another
 instance of the same class.
 
-```python
-class SandwichDecorator(Sandwich):
-
-	sandwich: Sandwich
-	
-	def __init__(self, sandwich: Sandwich):
-		self.sandwich = sandwich
-```
-
-Now we create a couple of subclasses that can be used as the basis of
-sandwiches. These will be used to create the objects to be
+First we create subclasses that can be used as the basis of
+sandwiches. They will be used to create the objects to be
 decorated. We'll take the type of bread to be used as the most basic
 aspect of sandwiches, and just show one variant.
 
 ```python
 class RyeBreadSW(Sandwich):
+	""" Sandwiches using rye bread."""
 	
 	def cost(self) -> int:
 		return 200
@@ -199,16 +194,33 @@ class RyeBreadSW(Sandwich):
 	def describe(self) -> string:
 		return " on rye bread."
 
-# similar classes are needed for the other kinds of bread we use
+# similar classes for the other kinds of bread we use omitted.
 ```
 
-Now we create subclasses of `SandwichDecorator`, each of which adds a
-single characteristic to the sandwich: the main ingredient, the type
-of bread, or a topping. Here are several such classes.
+Next we need the decorator class. It is a subclass of `Sandwich` and
+also stores a `Sandwich` object as an instance variable. The object is
+passed as an argument to its constructor, and is the object that we'll
+be decorating.
+
+```python
+class SandwichDecorator(Sandwich):
+	""" Superclass for using Decorator pattern with sandwiches.""" 
+	
+	sandwich: Sandwich # The samdwich to be decorated.
+	
+	def __init__(self, sandwich: Sandwich):
+		self.sandwich = sandwich
+```
+
+Now we can create subclasses of `SandwichDecorator`, each of which
+adds a single characteristic to the sandwich: the main ingredient, a
+topping, or anything else that we might add to a sandwich at an extra
+cost. Here are several such classes.
 
 ```python
 class CheeseSW(SandwichDecorator):
-
+	""" Decorate a sandwich object with cheese as a main ingredient."""
+	
 	def cost(self) -> int:
 		return self.sandwich.cost + 150
 		
@@ -216,7 +228,8 @@ class CheeseSW(SandwichDecorator):
 		return "Cheese sandwich " + self.sandwich.description
 		
 class LettuceSW(SandwichDecorator):
-
+	""" Decorate a sandwich object with lettuce as an ingredient."""
+	
 	def cost(self) -> int:
 		return return self.sandwich.cost + 50
 		
@@ -234,6 +247,7 @@ bread:
 >>> print(mySandwich.cost())
 400
 ```
+
 When we introduce a new topping we just need a new subclass of
 `SandwichDecorator`. This solution will provide a codebase which is
 much easier to maintain and add to than the other potential solutions. 

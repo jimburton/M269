@@ -1,19 +1,20 @@
-from Sorting import *
 import unittest
+from datetime import datetime
+from Sorting import *
 
 class Testing(unittest.TestCase):
 
     def setUp(self):
         self.people = list()
-        self.people.append(Name("Hubert",  "Huncke",    datetime(1915, 1, 9)))
-        self.people.append(Name("Gary",    "Snyder",    datetime(1930, 5, 8)))
-        self.people.append(Name("Gregory", "Corso",     datetime(1930, 3, 26)))
-        self.people.append(Name("Neal",    "Cassady",   datetime(1926, 2, 8)))
-        self.people.append(Name("Jack",    "Kerouac",   datetime(1922, 3, 12)))
-        self.people.append(Name("Allen",   "Ginsberg",  datetime(1926, 6, 3)))
-        self.people.append(Name("William", "Burroughs", datetime(1914, 2, 5)))
+        self.people.append(Person("Hubert",  "Huncke",    datetime(1915, 1, 9)))
+        self.people.append(Person("Gary",    "Snyder",    datetime(1930, 5, 8)))
+        self.people.append(Person("Gregory", "Corso",     datetime(1930, 3, 26)))
+        self.people.append(Person("Neal",    "Cassady",   datetime(1926, 2, 8)))
+        self.people.append(Person("Jack",    "Kerouac",   datetime(1922, 3, 12)))
+        self.people.append(Person("Allen",   "Ginsberg",  datetime(1926, 6, 3)))
+        self.people.append(Person("William", "Burroughs", datetime(1914, 2, 5)))
 
-    def test_sort_builtin(self):
+    def test_sort_basic(self):
         """Test that we can sort using the default method.
         """
         p = sort_builtin(self.people.copy())
