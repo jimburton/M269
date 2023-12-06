@@ -212,12 +212,6 @@ default value.
 	Now we can call these methods just by putting brackets after their
     name, e.g. `n1_dob_func()`. After making these changes the tests
     `test_sort_fullname` and `test_sort_dob` should pass. 
-	
-	(NB: in the function `sort_o_pred` which is written for you, we
-    need to convert `o_pred` from a comparator function to a simple
-    selector function like the ones we've used so far,
-    e.g. `Person.fullname`. This is the reason for the use of the
-    `comp_to_key` function.)
 
 5.  Another common way to modify sorting functions is by supplying a
     *comparator function*. This is a function that takes two objects,
@@ -232,6 +226,12 @@ default value.
     first. Complete the function `o_pred` in [](src/Sorting.py) so
     that it does this. When you have that working, the test
     `test_sort_o_pred` should pass.
+	
+	(NB: in the function `sort_o_pred` which is written for you, we
+    need to convert `o_pred` from a comparator function to a simple
+    selector function like the ones we've used so far,
+    e.g. `Person.fullname`. This is the reason for the use of the
+    `cmp_to_key` function.)
 	
 6.  Rather than hardcoding the character we want to order by, we want
     the flexibility to order by any character. Complete the function
