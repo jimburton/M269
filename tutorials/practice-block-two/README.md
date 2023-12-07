@@ -91,7 +91,7 @@ instances of the same class. These are `__lt__` ("less than"),
    name only*. 
 
 2. Implement the *Bubble Sort* algorithm in the file
-   [](src/Sorting.py). Do so by adding to the function that has this
+   [src/Sorting.py](./src/Sorting.py). Do so by adding to the function that has this
    signature:
    
    ```python
