@@ -133,7 +133,7 @@ instances of the same class. These are `__lt__` ("less than"),
    should perform that step "manually", swapping the values
    yourself. 
    
-   However, base your implementation on the version below, which adds
+   However, base your implementation on the version below which adds
    a simple optimisation that improves performance in the best case
    scenario. That scenario occurs when the data is either already
    sorted or becomes sorted after only a few passes. If on any given
