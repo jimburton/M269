@@ -41,7 +41,7 @@ The data we will be sorting is made up of `Person`
 objects. `Person` is a simple class encapsulating two strings (first
 and last name) and the date of birth of a person. Read the code
 here: [src/Person.py](./src/Person.py), and don't worry if there are
-parts of it you don't understand right now
+parts of it you don't understand right now.
 
 Before we can sort these objects we need to establish how we can
 determine that one is less than, equal to or greater than another.
