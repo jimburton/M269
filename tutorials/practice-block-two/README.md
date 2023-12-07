@@ -101,7 +101,7 @@ instances of the same class. These are `__lt__` ("less than"),
    Suppose we have an unsorted collection, `C`, where `n` is the
    number of elements in `C`. Bubble Sort begins by comparing the
    first element of `C`, `a`, to the second, `b`. If `a` is greater
-   than `b`, we swap their values. Then we compare the second element,
+   than `b`, we swap them. Then we compare the second element,
    `b`, to the third element, `c`. Again, if `b` is greater than `c`,
    we swap. We carry on in this way to the end of the collection, and
    call this the "first pass". By the end of the first pass the
