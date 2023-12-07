@@ -114,15 +114,16 @@ instances of the same class. These are `__lt__` ("less than"),
    ```
    procedure bubbleSort(A : list of sortable items)
        n := length(A)
-           for i := 0 to n-1
-	       for j := 0 to n-i-1
-                   # if this pair is out of order 
-                   if A[j] > A[j+1] then
-                       # swap the values
-                       swap(A[j], A[j+1]) # you need to decide how to do this
-                   end if
+       for i := 0 to n-1
+           for j := 0 to n-i-1
+               # if this pair is out of order 
+               if A[j] > A[j+1] then
+                   # swap the values
+                   swap(A[j], A[j+1]) # you need to decide how to do this
+               end if
            end for
        end for
+       return A
    end procedure
    ```
 
