@@ -322,5 +322,5 @@ default value.
 
 ## Discussion
 
-. What is the complexity of Bubble Sort?
+. What is the time complexity of Bubble Sort in the best and worst case scenarios? What will it be on average?
    
