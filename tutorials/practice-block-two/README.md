@@ -6,7 +6,7 @@ These exercises build on the code and exercises in the M269 book. We
 are looking ahead to the topic of *sorting*, a major subject in data
 structures and algorithms. The subject is introduced in Chapter 14,
 where a variety of algorithms for sorting data are
-introduced. Although you probably haven't seen this material yet
+explained. Although you won't have seen this material yet
 unless you are ahead of the current week in the book, this tutorial
 should be self-contained and will be useful preparation for later
 on. In addition, it teaches some Python techniques that you may not
@@ -37,10 +37,10 @@ the `solutions` branch of this repository. To do this on the GitHub
 website, click on the button labelled **main** in the upper left hand
 side of any page and select **solutions**. 
 
-The data we will be sorting is made up of sorting `Person`
+The data we will be sorting is made up of `Person`
 objects. `Person` is a simple class encapsulating two strings (first
 and last name) and the date of birth of a person. Read the code
-here:[src/Person.py](./src/Person.py), and don't worry if there are
+here: [src/Person.py](./src/Person.py), and don't worry if there are
 parts of it you don't understand right now.
 
 Before we can sort these objects we need to establish how we can
@@ -91,7 +91,7 @@ instances of the same class. These are `__lt__` ("less than"),
    name only*. 
 
 2. Implement the *Bubble Sort* algorithm in the file
-   [](src/Sorting.py). Do so by adding to the function that has this
+   [src/Sorting.py](./src/Sorting.py). Do so by adding to the function that has this
    signature:
    
    ```python
@@ -101,28 +101,29 @@ instances of the same class. These are `__lt__` ("less than"),
    Suppose we have an unsorted collection, `C`, where `n` is the
    number of elements in `C`. Bubble Sort begins by comparing the
    first element of `C`, `a`, to the second, `b`. If `a` is greater
-   than `b`, we swap their values. Then we compare the second element,
+   than `b`, we swap them. Then we compare the second element,
    `b`, to the third element, `c`. Again, if `b` is greater than `c`,
    we swap. We carry on in this way to the end of the collection, and
    call this the "first pass". By the end of the first pass the
    greatest element in the collection will have "bubbled up" all the
-   way to the last position so we don't need to check it again. So on
+   way to the last position, `n-1`, so we don't need to check it again. So on
    the first pass we loop from 0 to `n-1`. On the second pass we start
    again at the beginning and loop from 0 to `n-2`, and so on. Here is
    the pseudocode:
    
    ```
    procedure bubbleSort(A : list of sortable items)
-	   n := length(A)
-	   for i := 0 to n-1
-	       for j := 0 to n-i-1
+       n := length(A)
+       for i := 0 to n-1
+           for j := 0 to n-i-1
                # if this pair is out of order 
                if A[j] > A[j+1] then
                    # swap the values
                    swap(A[j], A[j+1]) # you need to decide how to do this
                end if
-		   end for
-	   end for
+           end for
+       end for
+       return A
    end procedure
    ```
 
@@ -132,7 +133,7 @@ instances of the same class. These are `__lt__` ("less than"),
    should perform that step "manually", swapping the values
    yourself. 
    
-   However, base your implementation on the version below, which adds
+   However, base your implementation on the version below which adds
    a simple optimisation that improves performance in the best case
    scenario. That scenario occurs when the data is either already
    sorted or becomes sorted after only a few passes. If on any given
@@ -143,22 +144,22 @@ instances of the same class. These are `__lt__` ("less than"),
 
    ```
    procedure bubbleSort(A : list of sortable items)
-	   n := length(A)
-	   for i := 0 to n-1
-		   swapped := false
-	       for j := 0 to n-i-1
+       n := length(A)
+       for i := 0 to n-1
+           swapped := false
+           for j := 0 to n-i-1
                # if this pair is out of order 
                if A[j] > A[j+1] then
                    # swap the values
                    swap(A[j], A[j+1]) # you need to decide how to do this
-			       swapped := true
+                   swapped := true
                end if
-		   end for
-		   if swapped = false:
-		       break
-		end for
-		return A
-	end procedure
+            end for
+            if swapped = false:
+                break
+       end for
+       return A
+   end procedure
    ```
    
 3. Run the first unit test. It should pass if your implementation of
@@ -199,15 +200,15 @@ default value.
 	def bubble_sort(inlist: list, key=None) -> list:
 	```
 	
-	This adds a keyword argument called `key` with a default value of
+    This adds a keyword argument called `key` with a default value of
     `None`. Users will still be able to call `bubble_sort` with just
     one argument (the list to be sorted) but they can also supply a
     second argument specifying a function to alter the way the sorting
     is done.
 	
-	Change the inner loop of `bubble_sort` to take account of the
+    Change the inner loop of `bubble_sort` to take account of the
     keyword argument. If its value is `None`, do the comparison
-    between `Person` objects as before. If `key` was supplied, we can
+    as before. If `key` was supplied, we can
     make use of it. Say the function passed in as the key was
     `Person.date_of_birth` and we want to use it to compare two
     `Person` objects, `n1` and `n2`. There are two ways to call an
@@ -297,8 +298,8 @@ default value.
     to tell us about the signatures of the functions passed to the
     search function.
 	
-	One difference between a function like `Person.fullname` and the
-    inner function returned by `char_pred` is in their *arity*, which
+    One difference between a function like `Person.fullname` and the
+    function `o_pred` is in their *arity*, which
     means the number of arguments they take. The arity of
     `Person.fullname` is 1, because like all instance methods it takes
     the argument `self`. The arity of a comparator function is 2,
@@ -321,5 +322,5 @@ default value.
 
 ## Discussion
 
-. What is the complexity of Bubble Sort?
+. What is the time complexity of Bubble Sort in the best and worst case scenarios? What will it be on average?
    
