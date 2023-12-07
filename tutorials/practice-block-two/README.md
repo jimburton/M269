@@ -37,11 +37,11 @@ the `solutions` branch of this repository. To do this on the GitHub
 website, click on the button labelled **main** in the upper left hand
 side of any page and select **solutions**. 
 
-The data we will be sorting is made up of sorting `Person`
+The data we will be sorting is made up of `Person`
 objects. `Person` is a simple class encapsulating two strings (first
 and last name) and the date of birth of a person. Read the code
 here:[src/Person.py](./src/Person.py), and don't worry if there are
-parts of it you don't understand right now.
+parts of it you don't understand right now
 
 Before we can sort these objects we need to establish how we can
 determine that one is less than, equal to or greater than another.
