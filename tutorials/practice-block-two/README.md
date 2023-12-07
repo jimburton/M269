@@ -208,7 +208,7 @@ default value.
 	
     Change the inner loop of `bubble_sort` to take account of the
     keyword argument. If its value is `None`, do the comparison
-    between as before. If `key` was supplied, we can
+    as before. If `key` was supplied, we can
     make use of it. Say the function passed in as the key was
     `Person.date_of_birth` and we want to use it to compare two
     `Person` objects, `n1` and `n2`. There are two ways to call an
