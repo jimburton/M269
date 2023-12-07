@@ -110,15 +110,14 @@ end procedure
 
 * Exercises
 
-Whilst you are working on the exercises you should run the tests that have been
-supplied often to check your progress. A suite of unit tests is defined in the
-file [[./src/test_Graph.py]]. IDEs like VSCode, PyCharm and others provide good
-tooling for unit tests -- easy ways to run them from within the editor. How you
-do that will depend on the IDE. Ask for advice in the tutorial if necessary. You
-can always run them from a terminal though. First, navigate to the ~src/~
-directory. On my system, the command to run python is ~python3~ -- it may differ
-on yours. These are the commands to run all of the tests at once or just the
-first one:
+A suite of unit tests is defined in the file [[./src/test_Graph.py]]. Whilst you are
+working on the exercises you should run the tests often to check your
+progress. IDEs like VSCode, PyCharm and others provide good tooling for unit
+tests -- easy ways to run them from within the editor. How you do that will
+depend on the IDE. Ask for advice in the tutorial if necessary. You can always
+run them from a terminal though. First, navigate to the ~src/~ directory. On my
+system, the command to run python is ~python3~ -- it may differ on yours. These
+are the commands to run all of the tests at once or just the first one:
    
 #+BEGIN_EXAMPLE
 $ python3 -m unittest -v test_Graph.Testing # runs all of the tests
