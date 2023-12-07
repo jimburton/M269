@@ -29,5 +29,5 @@ def char_pred(c: str):
     pass
 
 def sort_char_pred(people: list, c: str) -> list:
-    return bubble_sort(people, key=char_pred(c))
+    return bubble_sort(people, key=cmp_to_key(char_pred(c)))
 
