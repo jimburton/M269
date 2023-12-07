@@ -113,16 +113,16 @@ instances of the same class. These are `__lt__` ("less than"),
    
    ```
    procedure bubbleSort(A : list of sortable items)
-	   n := length(A)
-	   for i := 0 to n-1
+       n := length(A)
+           for i := 0 to n-1
 	       for j := 0 to n-i-1
-               # if this pair is out of order 
-               if A[j] > A[j+1] then
-                   # swap the values
-                   swap(A[j], A[j+1]) # you need to decide how to do this
-               end if
-		   end for
-	   end for
+                   # if this pair is out of order 
+                   if A[j] > A[j+1] then
+                       # swap the values
+                       swap(A[j], A[j+1]) # you need to decide how to do this
+                   end if
+           end for
+       end for
    end procedure
    ```
 
@@ -143,22 +143,22 @@ instances of the same class. These are `__lt__` ("less than"),
 
    ```
    procedure bubbleSort(A : list of sortable items)
-	   n := length(A)
-	   for i := 0 to n-1
-		   swapped := false
-	       for j := 0 to n-i-1
+       n := length(A)
+       for i := 0 to n-1
+           swapped := false
+           for j := 0 to n-i-1
                # if this pair is out of order 
                if A[j] > A[j+1] then
                    # swap the values
                    swap(A[j], A[j+1]) # you need to decide how to do this
-			       swapped := true
+                   swapped := true
                end if
-		   end for
-		   if swapped = false:
-		       break
-		end for
-		return A
-	end procedure
+            end for
+            if swapped = false:
+                break
+       end for
+       return A
+   end procedure
    ```
    
 3. Run the first unit test. It should pass if your implementation of
