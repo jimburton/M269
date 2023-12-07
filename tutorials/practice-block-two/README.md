@@ -106,7 +106,7 @@ instances of the same class. These are `__lt__` ("less than"),
    we swap. We carry on in this way to the end of the collection, and
    call this the "first pass". By the end of the first pass the
    greatest element in the collection will have "bubbled up" all the
-   way to the last position so we don't need to check it again. So on
+   way to the last position, `n-1`, so we don't need to check it again. So on
    the first pass we loop from 0 to `n-1`. On the second pass we start
    again at the beginning and loop from 0 to `n-2`, and so on. Here is
    the pseudocode:
