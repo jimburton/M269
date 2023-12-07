@@ -200,15 +200,15 @@ default value.
 	def bubble_sort(inlist: list, key=None) -> list:
 	```
 	
-	This adds a keyword argument called `key` with a default value of
+    This adds a keyword argument called `key` with a default value of
     `None`. Users will still be able to call `bubble_sort` with just
     one argument (the list to be sorted) but they can also supply a
     second argument specifying a function to alter the way the sorting
     is done.
 	
-	Change the inner loop of `bubble_sort` to take account of the
+    Change the inner loop of `bubble_sort` to take account of the
     keyword argument. If its value is `None`, do the comparison
-    between `Person` objects as before. If `key` was supplied, we can
+    between as before. If `key` was supplied, we can
     make use of it. Say the function passed in as the key was
     `Person.date_of_birth` and we want to use it to compare two
     `Person` objects, `n1` and `n2`. There are two ways to call an
