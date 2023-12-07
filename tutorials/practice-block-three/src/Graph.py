@@ -56,13 +56,13 @@ class Graph:
         Collects the set of disconnected nodes (those which are not part
         of any edge) in the graph.
         """
-        return set()
+        pass
 
     def elem(self, n) -> bool:
         """
         Returns true if n is a node in this graph, otherwise false.
         """
-        return False
+        pass
 
     def neighbours_out(self, n) -> set:
         """
@@ -71,7 +71,7 @@ class Graph:
 
         Throws a RuntimeError if n is not in the graph. 
         """
-        return set()
+        pass
 
     def neighbours_in(self, n) -> set:
         """
@@ -80,7 +80,7 @@ class Graph:
 
         Throws a RuntimeError if n is not in the graph. 
         """
-        return set()
+        pass
 
     def traverse_df_rec(self, n) -> list:
         """
@@ -89,7 +89,7 @@ class Graph:
 
         Throws a RuntimeError if n is not in the graph. 
         """
-        return []
+        pass
 
     def traverse_df_iter(self, n) -> list:
         """
@@ -99,7 +99,7 @@ class Graph:
 
         Throws a RuntimeError if n is not in the graph.
         """
-        return []
+        pass
         
     def traverse_bf(self, n) -> list:
         """
@@ -109,13 +109,13 @@ class Graph:
 
         Throws a RuntimeError if n is not in the graph.
         """
-        return []
+        pass
 
-        def __str__(self):
-            """
-            Format a graph for display in the REPL.
-            """
-            return f"({self.nodes}, {self.edges})"
+    def __str__(self):
+        """
+        Format a graph for display in the REPL.
+        """
+        return f"({self.nodes}, {self.edges})"
 
 # End of the Graph class
     
