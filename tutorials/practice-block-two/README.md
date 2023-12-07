@@ -298,8 +298,8 @@ default value.
     to tell us about the signatures of the functions passed to the
     search function.
 	
-	One difference between a function like `Person.fullname` and the
-    inner function returned by `char_pred` is in their *arity*, which
+    One difference between a function like `Person.fullname` and the
+    function `o_pred` is in their *arity*, which
     means the number of arguments they take. The arity of
     `Person.fullname` is 1, because like all instance methods it takes
     the argument `self`. The arity of a comparator function is 2,
