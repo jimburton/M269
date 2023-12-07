@@ -6,7 +6,7 @@ These exercises build on the code and exercises in the M269 book. We
 are looking ahead to the topic of *sorting*, a major subject in data
 structures and algorithms. The subject is introduced in Chapter 14,
 where a variety of algorithms for sorting data are
-introduced. Although you probably haven't seen this material yet
+explained. Although you won't have seen this material yet
 unless you are ahead of the current week in the book, this tutorial
 should be self-contained and will be useful preparation for later
 on. In addition, it teaches some Python techniques that you may not
