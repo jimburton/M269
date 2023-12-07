@@ -110,6 +110,21 @@ end procedure
 
 * Exercises
 
+Whilst you are working on the exercises you should run the tests that have been
+supplied often to check your progress. A suite of unit tests is defined in the
+file [[./src/test_Graph.py]]. IDEs like VSCode, PyCharm and others provide good
+tooling for unit tests -- easy ways to run them from within the editor. How you
+do that will depend on the IDE. Ask for advice in the tutorial if necessary. You
+can always run them from a terminal though. First, navigate to the ~src/~
+directory. On my system, the command to run python is ~python3~ -- it may differ
+on yours. These are the commands to run all of the tests at once or just the
+first one:
+   
+#+BEGIN_EXAMPLE
+$ python3 -m unittest -v test_Sorting.Testing # runs all of the tests
+$ python3 -m unittest -v test_Sorting.Testing.test_sort_basic # runs one of the tests
+#+END_EXAMPLE
+
 Implement the following methods in the file [[./src/Graph.py][src/Graph.py]].
 
 + ~disconnected(self) -> set~: Collect the set of disconnected nodes (those
@@ -117,20 +132,20 @@ Implement the following methods in the file [[./src/Graph.py][src/Graph.py]].
 + ~elem(self, n) -> bool~: Returns true if n is a node in this graph, otherwise
   false.
 + ~neighbours_out(self, n) -> set~: Collect the set of nodes that are connected
-  to ~n~ by an edge, where n is the source of that edge. Throw a ~RuntimeError~ if
+  to ~n~ by an edge, where n is the source of that edge. Throw a ~LookupError~ if
   ~n~ is not in the graph.
 + ~neighbours_in(self, n) -> set~: Collect the set of nodes that are connected
-  to ~n~ by an edge, where ~n~ is the target of that edge. Throw a ~RuntimeError~
+  to ~n~ by an edge, where ~n~ is the target of that edge. Throw a ~LookupError~
   if n is not in the graph.
 + ~traverse_df_rec(self, n) -> list~~: Implement a recursive depth-first
   traversal of the graph starting at ~n~ using the pseudocode above. Return the
-  node labels in a list. Throw a ~RuntimeError~ if ~n~ is not in the graph.
+  node labels in a list. Throw a ~LookupError~ if ~n~ is not in the graph.
 + ~traverse_df_iter(self, n) -> list~~: Implement an iterative depth-first
   traversal of the graph starting at ~n~ using the pseudocode above. Return the
-  node labels in a list. Throw a ~RuntimeError~ if ~n~ is not in the graph.
+  node labels in a list. Throw a ~LookupError~ if ~n~ is not in the graph.
 + ~traverse_bf(self, n) -> list~: Implement an iterative breadth-first traversal
   of the graph starting at ~n~, and returning the node labels as a list. Throw a
-  ~RuntimeError~ if ~n~ is not in the graph.
+  ~LookupError~ if ~n~ is not in the graph.
 
 ** Extension: Breadth-first search
 
