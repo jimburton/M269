@@ -130,7 +130,7 @@ instances of the same class. These are `__lt__` ("less than"),
             end for
             if swapped = false:
                 break
-			endif
+            endif
        end for
        return A
    end procedure
