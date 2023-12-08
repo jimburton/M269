@@ -128,7 +128,7 @@ instances of the same class. These are `__lt__` ("less than"),
                    swapped := true
                end if
             end for
-            if swapped = false:
+            if swapped = false then
                 break
             endif
        end for
