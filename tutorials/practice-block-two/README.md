@@ -101,47 +101,20 @@ instances of the same class. These are `__lt__` ("less than"),
    Suppose we have an unsorted collection, `C`, where `n` is the
    number of elements in `C`. Bubble Sort begins by comparing the
    first element of `C`, `a`, to the second, `b`. If `a` is greater
-   than `b`, we swap them. Then we compare the second element,
-   `b`, to the third element, `c`. Again, if `b` is greater than `c`,
-   we swap. We carry on in this way to the end of the collection, and
+   than `b`, we swap them. Then we compare the second element, `b`, to
+   the third element, `c`. Again, if `b` is greater than `c`, we
+   swap. We carry on in this way to the end of the collection, and
    call this the "first pass". By the end of the first pass the
    greatest element in the collection will have "bubbled up" all the
-   way to the last position, `n-1`, so we don't need to check it again. So on
-   the first pass we loop from 0 to `n-1`. On the second pass we start
-   again at the beginning and loop from 0 to `n-2`, and so on. Here is
-   the pseudocode:
+   way to the last position, `n-1`, so we don't need to check it
+   again. So on the first pass we loop from 0 to `n-1`. On the second
+   pass we start again at the beginning and loop from 0 to `n-2`, and
+   so on. If during any pass there was no need to swap anything then
+   it stands to reason that the data is sorted. So we add a boolean
+   flag called `swapped` to keep track of whether anything was swapped
+   on the current pass. If nothing was swapped, we can exit the outer
+   loop. Here is the pseudocode:
    
-   ```
-   procedure bubbleSort(A : list of sortable items)
-       n := length(A)
-       for i := 0 to n-1
-           for j := 0 to n-i-1
-               # if this pair is out of order 
-               if A[j] > A[j+1] then
-                   # swap the values
-                   swap(A[j], A[j+1]) # you need to decide how to do this
-               end if
-           end for
-       end for
-       return A
-   end procedure
-   ```
-
-   Read this pseudocode carefully and make sure you understand
-   it. Hopefully, it should be pretty easy for you to convert it to
-   Python. Note that there is no `swap` function in Python and you
-   should perform that step "manually", swapping the values
-   yourself. 
-   
-   However, base your implementation on the version below which adds
-   a simple optimisation that improves performance in the best case
-   scenario. That scenario occurs when the data is either already
-   sorted or becomes sorted after only a few passes. If on any given
-   pass we don't swap any values, then we know the data is sorted and
-   we can stop. So we add a boolean flag called `swapped` to keep
-   track of whether anything was swapped on the current pass. If
-   nothing was swapped, we can exit the outer loop.
-
    ```
    procedure bubbleSort(A : list of sortable items)
        n := length(A)
@@ -157,6 +130,7 @@ instances of the same class. These are `__lt__` ("less than"),
             end for
             if swapped = false:
                 break
+			endif
        end for
        return A
    end procedure
