@@ -12,9 +12,9 @@ should be self-contained and will be useful preparation for later
 on. In addition, it teaches some Python techniques that you may not
 have come across yet. 
 
-There is more work here than we can probably do in one session and the
-later exercises are pretty challenging. Don't worry if you don't
-finish the work during the tutorial.
+There is more work here than we can do in one session and the later
+exercises are pretty challenging. Don't worry if you don't finish the
+work during the tutorial.
 
 *Bubble Sort* is a simple sorting algorithm. Its purpose is to
 transform a collection (such as a list or an array) so that every
