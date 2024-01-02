@@ -171,7 +171,7 @@ To run the automatic tests provided see the [section on testing below](#testing)
 ## Testing
 
 Tests are provided in the file
-[src/TestLinkedSet.py](src/TestLinkedSet.py). You can read these to
+[src/test_LinkedSet.py](src/test_LinkedSet.py). You can read these to
 get an idea of how they work, and run them often to check your
 progress. The tests are *unit tests*, a standard testing methodology
 which isn't covered in this module. If you are using an IDE such as VS
@@ -206,3 +206,4 @@ $ python3 -m unittest -v TestLinkedSet.Testing.test_add_and_size
    the objects in our set can be ordered. If we could find a more
    efficient underlying data structure, what would happen to the
    complexity of `intersection`?
+
