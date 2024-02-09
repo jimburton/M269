@@ -40,10 +40,10 @@ class Graph:
     def add_edge(self, e) -> None:
         """
         Adds an edge to the graph. Inconsistencies in the edges (eg either
-        element of the tuple is not in the graph) will cause a RuntimeError.
+        element of the tuple is not in the graph) will cause a LookupError.
         """
         if e[0] not in self.nodes or e[1] not in self.nodes:
-            raise RuntimeError(f"One or both nodes not in graph: {e}")
+            raise LookupError(f"One or both nodes not in graph: {e}")
         if e not in self.edges:
             self.edges.add(e)
 
@@ -70,10 +70,10 @@ class Graph:
         The set of nodes that are connected to n by an edge, where n is the
         source of that edge.
 
-        Throws a RuntimeError if n is not in the graph. 
+        Throws a LookupError if n is not in the graph. 
         """
         if n not in self.nodes:
-            raise RuntimeError(f"Node not in graph: {n}")
+            raise LookupError(f"Node not in graph: {n}")
         discovered = set()
         for e in self.edges:
             if e[0] == n:
@@ -85,10 +85,10 @@ class Graph:
         The set of nodes that are connected to n by an edge, where n is the
         target of that edge.
 
-        Throws a RuntimeError if n is not in the graph. 
+        Throws a LookupError if n is not in the graph. 
         """
         if n not in self.nodes:
-            raise RuntimeError(f"Node not in graph: {n}")
+            raise LookupError(f"Node not in graph: {n}")
         discovered = set()
         for e in self.edges:
             if e[1] == n:
@@ -100,12 +100,12 @@ class Graph:
         Performs a recursive depth-first traversal of the graph starting at
         n, and returns the node labels into a list.
 
-        Throws a RuntimeError if n is not in the graph. 
+        Throws a LookupError if n is not in the graph. 
         """
         if n not in self.nodes:
-            raise RuntimeError(f"Node not in graph: {n}")
+            raise LookupError(f"Node not in graph: {n}")
         discovered = [n]
-        for m in self.neighbours_out(node):
+        for m in self.neighbours_out(n):
             discovered.extend(self.traverse_df_rec(m))
         return list(dict.fromkeys(discovered))
 
@@ -115,10 +115,10 @@ class Graph:
         n, and returns the node labels into a list. Here we are using a plain
         old list as a stack.
 
-        Throws a RuntimeError if n is not in the graph.
+        Throws a LookupError if n is not in the graph.
         """
         if n not in self.nodes:
-            raise RuntimeError(f"Node not in graph: {n}")
+            raise LookupError(f"Node not in graph: {n}")
         stack = [n]
         discovered = [n]
         while stack:
@@ -135,10 +135,10 @@ class Graph:
         n, and returns the node labels into a list. Here we are using a plain old
         list as a queue.
 
-        Throws a RuntimeError if n is not in the graph.
+        Throws a LookupError if n is not in the graph.
         """
         if n not in self.nodes:
-            raise RuntimeError(f"Node not in graph: {n}")
+            raise LookupError(f"Node not in graph: {n}")
         queue = [n]
         discovered = [n]
         while queue:
@@ -149,23 +149,10 @@ class Graph:
                     queue.append(o)
         return discovered
 
-        def __str__(self):
-            """
-            Format a graph for display in the REPL.
-            """
-            return f"({self.nodes}, {self.edges})"
+    def __str__(self):
+        """
+        Format a graph for display in the REPL.
+        """
+        return f"({self.nodes}, {self.edges})"
 
 # End of the Graph class
-    
-# a couple of trees for playing in the REPL
-                    
-tree0 = Graph.build({'A', 'B', 'C', 'D'},     # nodes
-                    {('A', 'B'), ('A', 'C')}) # edges
-
-tree1 = Graph.build({'A', 'B', 'C', 'D', 'E', 'F', 'G'}     # nodes
-                    , {('A', 'B'), ('A', 'C'), ('A', 'E')   # edges
-                       , ('B', 'D'), ('B', 'F'), ('C', 'G')
-                       , ('E', 'F')})
-
-tree_discon = Graph.build({'A', 'B', 'C', 'D', 'E', 'F', 'G'}     # nodes
-                    , {('A', 'C'), ('A', 'F')})
