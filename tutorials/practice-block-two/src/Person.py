@@ -41,3 +41,6 @@ class Person:
         """ This method is called when objects are passed to the `str' method."""
         return self.__str__()
     
+    def __eq__(self, other: 'Person') -> bool:
+        return self.first_name == other.first_name and self.last_name == other.last_name
+    
