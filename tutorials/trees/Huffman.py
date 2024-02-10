@@ -5,10 +5,7 @@ def freq_table(input: str) -> dict:
     """Build a frequency table from the input string."""
     ft = dict()
     for c in input:
-        if c in ft:
-            ft[c] += 1
-        else:
-            ft[c] = 1
+        ft[c] = ft[c] + 1 if c in ft else 1
     return ft
 
 def htree_from_freqtable(ft: dict) -> Tree:
