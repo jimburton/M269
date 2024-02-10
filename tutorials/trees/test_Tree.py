@@ -19,5 +19,5 @@ class Testing(unittest.TestCase):
 
     def test_traverse(self):
         """ Test that the traverse method works."""
-        self.assertEqual(self.tree0.copy().traverse(), [0])
-        self.assertEqual(self.tree1.copy().traverse(), [0,1,0])
+        self.assertEqual(self.tree0.copy().to_list(), [0])
+        self.assertEqual(self.tree1.copy().to_list(), [0,1,0])
