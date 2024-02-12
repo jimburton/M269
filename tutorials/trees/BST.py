@@ -4,6 +4,17 @@ from Tree import *
 class BST(Tree):
     """A Binary Search Tree."""
 
+    def search(self, item) -> bool:
+        """Search BST for an item."""
+        if item == self.value:
+            return True
+        elif item < self.value and not self.left is None:
+            return self.left.search(item)
+        elif item > self.value and not self.right is None:
+            return self.right.search(item)
+        else:
+            return False
+
     def insert(self, item) -> 'BST':
         """Insert a new item to the BST."""
         if item < self.value:
@@ -39,31 +50,20 @@ class BST(Tree):
             else:
                 return self
 
-
-    def search(self, item) -> bool:
-        """Search BST for an item."""
-        if item == self.value:
-            return True
-        elif item < self.value and not self.left is None:
-            return self.left.search(item)
-        elif item > self.value and not self.right is None:
-            return self.right.search(item)
-        else:
-            return False
+    @classmethod
+    def merge(cls, t1: 'BST', t2: 'BST') -> 'BST':
+        """Merge two BSTs. Randomises the labels of t2 then inserts each label to t1."""
+        lst = t2.traverse()
+        random.shuffle(lst) 
+        for n in lst:
+            t1.insert(n)
+        return t1
         
     @classmethod    
     def build(cls, ns: set) -> 'BST':
-        """Build a BST from a set."""
+        """Build a BST from a non-empty set of labels."""
         t = Tree(ns.pop(), None, None)
         for n in ns:
             t.insert(n)
         return t
-    
-    @classmethod
-    def merge(cls, t1: 'BST', t2: 'BST') -> 'BST':
-        """Merge two BSTs."""
-        lst = t2.traverse()
-        random.shuffle(lst)
-        for n in lst:
-            t1.insert(n)
-        return t1
+        
