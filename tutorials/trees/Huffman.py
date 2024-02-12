@@ -2,6 +2,7 @@ from queue import PriorityQueue
 from Tree import *
 
 def freq_table(input: str) -> dict:
+    """Build a frequency table from the input string."""
     ft = dict()
     for c in input:
         if c in ft:
@@ -11,6 +12,7 @@ def freq_table(input: str) -> dict:
     return ft
 
 def htree_from_freqtable(ft: dict) -> Tree:
+    """Build a Huffman tree from a frequency table."""
     queue = PriorityQueue()
     for (k,v) in ft.items():
         queue.put((v, Tree((k,v), None, None)))
@@ -21,6 +23,7 @@ def htree_from_freqtable(ft: dict) -> Tree:
     return queue.get()[1]
 
 def build_code(t: Tree) -> dict:
+    """Build the Huffman code from a Huffman tree."""
     def make_path(t: Tree, path: list) -> dict:
         if t.left is None and t.right is None:
             return {t.value[0]: path}
@@ -32,6 +35,9 @@ def build_code(t: Tree) -> dict:
     return make_path(t, [])
 
 def encode(input: str) -> tuple:
+    """Make the Huffman coding of the input string. The coding is a tuple of the Huffman code
+       and the encoded data.
+    """
     ft = freq_table(input)
     ht = htree_from_freqtable(ft)
     code = build_code(ht)
@@ -41,6 +47,7 @@ def encode(input: str) -> tuple:
     return (code, data)
 
 def tree_from_code(code: dict) -> Tree:
+    """Reconstruct the Huffman tree from a Huffman code."""
     t = Tree(None, None, None)
     node = t
     for (k,path) in code.items():
@@ -59,6 +66,7 @@ def tree_from_code(code: dict) -> Tree:
     return t
 
 def decode(code: dict, data: list) -> str:
+    """Decode a list of bools using a Huffman code."""
     t = tree_from_code(code)
     node = t
     secret = ""
