@@ -5,17 +5,16 @@ def freq_table(input: str) -> dict:
     """Build a frequency table from the input string."""
     ft = dict()
     for c in input:
-        if c in ft:
-            ft[c] += 1
-        else:
-            ft[c] = 1
+        ft[c] = ft[c] + 1 if c in ft else 1
     return ft
 
 def htree_from_freqtable(ft: dict) -> Tree:
     """Build a Huffman tree from a frequency table."""
     queue = PriorityQueue()
+    # Put a leaf node into the queue for every key,value in the frequency table.
     for (k,v) in ft.items():
         queue.put((v, Tree((k,v), None, None)))
+    # Combine and enqueue the first two nodes in the queue until there is only one left. 
     while queue.qsize() > 1:
         (f1,n1) = queue.get()
         (f2,n2) = queue.get()
@@ -25,12 +24,12 @@ def htree_from_freqtable(ft: dict) -> Tree:
 def build_code(t: Tree) -> dict:
     """Build the Huffman code from a Huffman tree."""
     def make_path(t: Tree, path: list) -> dict:
-        if t.left is None and t.right is None:
+        if t.is_leaf():
             return {t.value[0]: path}
         else:
-            lh = make_path(t.left, path + [False]) if t.left else {}
-            rh = make_path(t.right, path + [True]) if t.right else {}
-            lh.update(rh)
+            lh = make_path(t.left, path + [False]) if t.left else {} # Recurse left.
+            rh = make_path(t.right, path + [True]) if t.right else {} # Recurse right.
+            lh.update(rh) # Combine the dicts.
             return lh 
     return make_path(t, [])
 
@@ -52,8 +51,9 @@ def tree_from_code(code: dict) -> Tree:
     node = t
     for (k,path) in code.items():
         for i in range(len(path)):
-            leaf = i == len(path)-1
+            leaf = i == len(path)-1 # Last step in the path.
             next = Tree((k,0), None, None) if leaf else Tree(None, None, None)
+            # Add a right or left node to the Tree and move in that direction.
             if path[i]:
                 if node.right is None:
                     node.right = next
