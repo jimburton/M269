@@ -68,14 +68,14 @@ def tree_from_code(code: dict) -> Tree:
 def decode(code: dict, data: list) -> str:
     """Decode a list of bools using a Huffman code."""
     t = tree_from_code(code)
-    node = t
+    node = t # Start at the root.
     secret = ""
     for b in data:
         if node.is_leaf():
-            node = t
-        node = node.right if b else node.left
+            node = t # Return to the root.
+        node = node.right if b else node.left # Follow the path.
         if node.is_leaf():
-            secret += node.value[0]
+            secret += node.value[0] # Add a char to the decoded message.
     return secret
 
 #def print(t: Tree):
