@@ -13,13 +13,11 @@ class Testing(unittest.TestCase):
         heap = MaxHeap()
         for n in self.small_list:
             heap.insert(HuffmanTree(('x',n), None, None))
-        for i,t in enumerate(heap.heap):
-            l = heap.left_child(i)
-            r = heap.right_child(i)
-            if l < len(heap.heap):
-                self.assertGreaterEqual(t.get_frequency(), heap.heap[l].get_frequency())
-            if r < len(heap.heap):
-                self.assertGreaterEqual(t.get_frequency(), heap.heap[r].get_frequency())
+        freq = heap.remove().get_frequency()
+        while(heap.size() > 0):
+            new_freq = heap.remove().get_frequency()
+            self.assertGreaterEqual(freq, new_freq)
+            freq = new_freq
 
     def test_remove(self):
         """Test that removing preserves the heap property."""

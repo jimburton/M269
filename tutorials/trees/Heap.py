@@ -9,33 +9,27 @@ class Heap:
     Direction = Enum('Direction', ['ASC', 'DESC'])
 
     def __init__(self, dir: Direction) -> None:
-        self.heap = []
+        self.__heap = []
         self.dir = dir
         self.__cmp = self.__lt if dir.name == 'ASC' else self.__gt
 
-    def __lt(self, x, y):
-        return x < y
-    
-    def __gt(self, x, y):
-        return x > y
-
     def size(self):
         """Get the size of the heap."""
-        return len(self.heap)
+        return len(self.__heap)
 
     def insert(self, item: Any) -> None:
         """Insert a node to the heap."""
-        self.heap.append(item)
+        self.__heap.append(item)
         self.__trickle_up()
 
     def remove(self) -> Any:
         """Remove the first node from the heap."""
-        if len(self.heap) == 0:
+        if self.size() == 0:
             return None
         else:
-            result = self.heap[0]
-            self.heap[0] = self.heap[-1]
-            self.heap.pop()
+            result = self.__heap[0]
+            self.__heap[0] = self.__heap[-1]
+            self.__heap.pop()
             self.__trickle_down()
             return result
 
@@ -43,15 +37,15 @@ class Heap:
         """Swap the last item in the heap with its parent until
         the heap property holds.
         """
-        pos = len(self.heap)-1
-        t = self.heap[pos]
+        pos = len(self.__heap)-1
+        t = self.__heap[pos]
         pos_parent = self.parent(pos)
-        t_p = self.heap[pos_parent]
+        t_p = self.__heap[pos_parent]
         while self.__cmp(t, t_p) and pos > 0:
-            self.heap[pos],self.heap[pos_parent] = self.heap[pos_parent],self.heap[pos]
+            self.__heap[pos],self.__heap[pos_parent] = self.__heap[pos_parent],self.__heap[pos]
             pos = pos_parent
             pos_parent = self.parent(pos)
-            t_p = self.heap[pos_parent]
+            t_p = self.__heap[pos_parent]
             
 
     def __trickle_down(self) -> None:
@@ -59,26 +53,26 @@ class Heap:
         until the heap property holds.
         """
         pos = 0
-        count = len(self.heap)
+        count = len(self.__heap)
         if pos < count:
             done = False
             while not done:
-                t = self.heap[pos] 
+                t = self.__heap[pos] 
                 pos_l = self.left_child(pos)
                 pos_r = self.right_child(pos)
                 if pos_r < count:
-                    t_l = self.heap[pos_l]
-                    t_r = self.heap[pos_r]
+                    t_l = self.__heap[pos_l]
+                    t_r = self.__heap[pos_r]
                     if self.__cmp(t_l, t) or self.__cmp(t_r, t):
                         dest = pos_l if self.__cmp(t_l, t_r) else pos_r
-                        self.heap[pos],self.heap[dest] = self.heap[dest],self.heap[pos]
+                        self.__heap[pos],self.__heap[dest] = self.__heap[dest],self.__heap[pos]
                         pos = dest
                     else:
                         done = True
                 elif pos_l < count:
-                    t_l = self.heap[pos_l]
+                    t_l = self.__heap[pos_l]
                     if self.__cmp(t_l, t):
-                        self.heap[pos],self.heap[pos_l] = self.heap[pos_l],self.heap[pos]
+                        self.__heap[pos],self.__heap[pos_l] = self.__heap[pos_l],self.__heap[pos]
                         pos = pos_l
                     else:
                         done = True
@@ -96,6 +90,14 @@ class Heap:
     def parent(self, i: int) -> int:
         """Calculate the index of the parent of the node stored at i."""
         return math.floor((i-1)/2)
+    
+    def __lt(self, x, y):
+        """Comparison for a min heap."""
+        return x < y
+    
+    def __gt(self, x, y):
+        """Comparison for a max heap."""
+        return x > y
 
 class MinHeap(Heap):
     """A min heap."""
