@@ -3,20 +3,20 @@ from enum import Enum
 from typing import Any
 
 class Heap:
-    """A heap that stores instances of the Tree class for use in a
-    Huffman coding.
+    """A heap that can be min or max. Values stored must be capable of comparison
+    with (<) and (>).
     """
     Direction = Enum('Direction', ['ASC', 'DESC'])
 
     def __init__(self, dir: Direction) -> None:
         self.heap = []
         self.dir = dir
-        self.cmp = self.lt if dir.value == 'ASC' else self.gt
+        self.__cmp = self.__lt if dir.name == 'ASC' else self.__gt
 
-    def lt(self, x, y):
+    def __lt(self, x, y):
         return x < y
     
-    def gt(self, x, y):
+    def __gt(self, x, y):
         return x > y
 
     def size(self):
@@ -26,7 +26,7 @@ class Heap:
     def insert(self, item: Any) -> None:
         """Insert a node to the heap."""
         self.heap.append(item)
-        self.trickle_up()
+        self.__trickle_up()
 
     def remove(self) -> Any:
         """Remove the first node from the heap."""
@@ -36,10 +36,10 @@ class Heap:
             result = self.heap[0]
             self.heap[0] = self.heap[-1]
             self.heap.pop()
-            self.trickle_down()
+            self.__trickle_down()
             return result
 
-    def trickle_up(self) -> None:
+    def __trickle_up(self) -> None:
         """Swap the last item in the heap with its parent until
         the heap property holds.
         """
@@ -47,14 +47,14 @@ class Heap:
         t = self.heap[pos]
         pos_parent = self.parent(pos)
         t_p = self.heap[pos_parent]
-        while self.cmp(t, t_p) and pos > 0:
+        while self.__cmp(t, t_p) and pos > 0:
             self.heap[pos],self.heap[pos_parent] = self.heap[pos_parent],self.heap[pos]
             pos = pos_parent
             pos_parent = self.parent(pos)
             t_p = self.heap[pos_parent]
             
 
-    def trickle_down(self) -> None:
+    def __trickle_down(self) -> None:
         """Swap the first item in the heap with one of its children
         until the heap property holds.
         """
@@ -69,15 +69,15 @@ class Heap:
                 if pos_r < count:
                     t_l = self.heap[pos_l]
                     t_r = self.heap[pos_r]
-                    if self.cmp(t_l, t) or self.cmp(t_r, t):
-                        dest = pos_l if self.cmp(t_l, t_r) else pos_r
+                    if self.__cmp(t_l, t) or self.__cmp(t_r, t):
+                        dest = pos_l if self.__cmp(t_l, t_r) else pos_r
                         self.heap[pos],self.heap[dest] = self.heap[dest],self.heap[pos]
                         pos = dest
                     else:
                         done = True
                 elif pos_l < count:
                     t_l = self.heap[pos_l]
-                    if self.cmp(t_l, t):
+                    if self.__cmp(t_l, t):
                         self.heap[pos],self.heap[pos_l] = self.heap[pos_l],self.heap[pos]
                         pos = pos_l
                     else:
@@ -101,10 +101,8 @@ class MinHeap(Heap):
     """A min heap."""
     def __init__(self) -> None:
         super().__init__(Heap.Direction.ASC)
-        self.cmp = self.lt
 
 class MaxHeap(Heap):
     """A max heap."""
     def __init__(self) -> None:
         super().__init__(Heap.Direction.DESC)
-        self.cmp = self.gt
