@@ -1,3 +1,4 @@
+import math
 from Tree import *
 
 class MinHeap:
@@ -44,4 +45,4 @@ class MinHeap:
 
     def parent(i: int) -> int:
         """Calculate the index of the parent of the node stored at i."""
-        return round((i-1)/2)
+        return math.floor((i-1)/2)
