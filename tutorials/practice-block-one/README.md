@@ -106,6 +106,8 @@ $ python3 -i LinkedSet.py
 
 To run the automatic tests provided see the [section on testing below](#testing).
 
+## Exercises
+
 1. Implement the `member` method using the pattern above. This is the algorithm:
    + If `head` is `None`, return `False`.
    + Make a new local variable called `current`, assigning it the value of `self.head`.
@@ -114,7 +116,7 @@ To run the automatic tests provided see the [section on testing below](#testing)
    + Otherwise, set `current` equal to `current.next` and keep looping.
    + If you get beyond the loop then the value you were looking for isn't in the set. Return `False`.
 2. Implement the `size` method using the same approach. Initialise a
-   counter then using the pattern above to increment it for every item
+   counter then use the pattern above to increment it for every item
    in the set. Finally, return the counter.
 3. Implement the `add` method. Remember, no duplicates are
    allowed. Use the `member` method to check for that. If the new item
