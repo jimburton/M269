@@ -33,7 +33,7 @@ class LinkedSet(Set):
 
     def add(self, item: object) -> None:
         if self.member(item):
-            pass
+            return
         n = LinkedSet.Node(item)
         n.next = self.head
         self.head = n

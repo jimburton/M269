@@ -2,7 +2,8 @@ from LinkedSet import LinkedSet
 import unittest
 
 class Testing(unittest.TestCase):
-
+    """Testing the Set and LinkedSet modules."""
+    
     def test_add_and_size(self):
         """Test that we can add items to a set and the size method
         works as expected.
@@ -12,6 +13,15 @@ class Testing(unittest.TestCase):
         for i in range(0,10):
             s1.add(i)
         self.assertEqual(s1.size(), 10)
+        
+    def test_add_and_dupes(self):
+        """Test that we cannot add duplicate items.
+        """
+        s1 = LinkedSet()
+        s1.add(1)
+        print(s1.member(1))
+        s1.add(1)
+        self.assertEqual(s1.size(), 1)
 
     def test_add_and_member(self):
         """Test that we can add items to a set and the member method
