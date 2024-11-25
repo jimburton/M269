@@ -13,17 +13,17 @@ class LinkedSet(Set):
     def __init__(self):
         """Initialise the list to be empty."""
         self.head = None
-
-    def size(self) -> int:
-        """Return the cardinality of this set."""
-        pass
-
+        
     def member(self, item: object) -> bool:
         """Returns True if item is a member of this set."""
         pass
-
+        
     def add(self, item: object) -> None:
         """Add item to the set. No duplicates allowed."""
+        pass
+
+    def size(self) -> int:
+        """Return the cardinality of this set."""
         pass
 
     def tolist(self) -> [object]:

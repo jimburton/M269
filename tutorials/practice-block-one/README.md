@@ -106,14 +106,16 @@ $ python3 -i LinkedSet.py
 
 To run the automatic tests provided see the [section on testing below](#testing).
 
-1. Implement the `size` method. You can do this by initialising a
+1. Implement the `member` method using the pattern above. This is the algorithm:
+   + If `head` is `None`, return `False`.
+   + Make a new local variable called `current`, assigning it the value of `self.head`.
+   + While `current` is not equal to `None`:
+   + if `current.data` is equal to the value you are looking for, return `True`.
+   + Otherwise, set `current` equal to `current.next` and keep looping.
+   + If you get beyond the loop then the value you were looking for isn't in the set. Return `False`.
+2. Implement the `size` method using the same approach. Initialise a
    counter then using the pattern above to increment it for every item
    in the set. Finally, return the counter.
-2. Use the same pattern to implement the `member` method. If you
-   encounter a node whose item is equal to the thing we're looking
-   for, return `True`. If you get all the way to the end of the set
-   without doing that, the element was not in the list so return
-   `False`.
 3. Implement the `add` method. Remember, no duplicates are
    allowed. Use the `member` method to check for that. If the new item
    is not a duplicate, make a new `Node` object with `next` pointing
