@@ -188,14 +188,14 @@ navigate to the `src` directory in a terminal the following command
 runs all tests:
 
 ```
-$ python3 -m unittest -v TestLinkedSet.Testing
+$ python3 -m unittest -v test_LinkedSet.Testing
 ```
 
 You can run a specific test by giving its name. For instance, to run
 the first test, `test_add_and_size`:
 
 ```
-$ python3 -m unittest -v TestLinkedSet.Testing.test_add_and_size
+$ python3 -m unittest -v test_LinkedSet.Testing.test_add_and_size
 ```
 
 
