@@ -113,28 +113,10 @@ instances of the same class. These are `__lt__` ("less than"),
    it stands to reason that the data is sorted. So we add a boolean
    flag called `swapped` to keep track of whether anything was swapped
    on the current pass. If nothing was swapped, we can exit the outer
-   loop. Here is the pseudocode:
-   
-   ```
-   procedure bubbleSort(A : list of sortable items)
-       n := length(A)
-       for i := 0 to n-1
-           swapped := false
-           for j := 0 to n-i-1
-               # if this pair is out of order 
-               if A[j] > A[j+1] then
-                   # swap the values
-                   swap(A[j], A[j+1]) # you need to decide how to do this
-                   swapped := true
-               end if
-            end for
-            if swapped = false then
-                break
-            endif
-       end for
-       return A
-   end procedure
-   ```
+   loop. 
+
+   If you want more guidance on implementing the function, see 
+   [the pseudocode here](./BubbleSort.md).
    
 3. Run the first unit test. It should pass if your implementation of
    Bubble Sort is correct. The unit tests are defined in the file
