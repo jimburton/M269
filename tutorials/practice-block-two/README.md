@@ -46,19 +46,19 @@ parts of it you don't understand right now.
 Before we can sort these objects we need to establish how we can
 determine that one is less than, equal to or greater than another.
 
-## Python's magic methods
+## Python's dunder methods
 
-Python's so-called magic methods are used to determine the default
+Python's so-called dunder methods are used to determine the default
 behaviour of objects in a wide variety of ways. You've already
 encountered at least one of these: the constructor method, `__init__`,
 that determines what happens when we make a new instance of a
-class. The names of all magic methods begin and end like `__init__`
-with two underscores. Three magic methods are already defined in the
+class. The names of all dunder methods begin and end like `__init__`
+with two underscores. Three dunder methods are already defined in the
 `Person` class: `__init__`, `__str__` and `__repr__`. The latter
 methods allow us to govern what happens when we call `str` or `print`
 on a `Person` object.
 
-We need to define those magic methods that allow us to *order*
+We need to define those methods that allow us to *order*
 instances of the same class. These are `__lt__` ("less than"),
 `__le__` ("less than or equal to"), `__eq__` ("equal to") and `__gt__`
 ("greater than").
@@ -156,7 +156,7 @@ The built in Python sorting methods, e.g. `sorted(list)` and
 `list.sort()`, take an *optional* argument called `key` that determines
 how the comparison between two objects should be made. So if we want
 to sort `Person` objects by the `dob` field, instead of just using the
-default way we defined in the magic methods, we could do it like this:
+default way we defined in the dunder methods, we could do it like this:
 
 ```python
 # people is a list of Person objects
