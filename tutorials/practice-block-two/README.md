@@ -65,7 +65,7 @@ side of any page and select **solutions**.
    loop. 
 
    If you want more guidance on implementing the function, see 
-   [the pseudocode here](./BubbleSort.md).
+   [the pseudocode here](./BubbleSort.md). 
 
 2. Run the first unit test. It should pass if your implementation of
    Bubble Sort is correct. The unit tests are defined in the file
@@ -191,12 +191,12 @@ default value.
 
 	where `n1` and `n2` the are elements of the list we want to
     compare. Then we make the comparison between `k1` and `k2`, the
-    return values of the method calls. 
-	
-	We are making use here of Python's support for *first class
-    functions*, a powerful feature that allows us to treat functions
-    like any other value. After making these changes the tests
-    `test_sort_fullname` and `test_sort_dob` should pass.
+    return values of the method calls. We are making use here of Python's 
+    support for *first class functions*, a powerful feature that allows us 
+    to treat functions like any other value. 
+    
+    After making these changes the tests `test_sort_fullname` and `test_sort_dob` 
+    should pass.
 
 5.  Another common way to customise sorting functions is by supplying
     a *comparator function*. This is a function that takes two
@@ -233,7 +233,7 @@ default value.
     `char_pred`. Change the definition of `o_pred` so that it just
     returns a call to `char_pred`. When you have done this you will
     also need to change the function `sort_o_pred`. It currently gives
-    the *name* of the function object `o_pred` and looks like this:
+    a reference to the function object `o_pred` and looks like this:
 	
 	```python
 	return bubble_sort(people, key=cmp_to_key(o_pred))
@@ -288,5 +288,6 @@ default value.
 
 ## Discussion
 
-. What is the time complexity of Bubble Sort in the best and worst case scenarios? What will it be on average?
++ What is the time complexity of Bubble Sort in the best and worst case scenarios? 
+  What will it be on average?
    
