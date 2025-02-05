@@ -45,7 +45,6 @@ side of any page and select **solutions**.
    
    ```python
    def bubble_sort(inlist: list) -> list:
-   ```
    
    Suppose we have an unsorted collection, `C`, where `n` is the
    number of elements in `C`. Bubble Sort begins by comparing the
@@ -85,8 +84,8 @@ side of any page and select **solutions**.
    
 If your `bubble_sort` function works with a list of integers it should 
 work for lists of any type that has a natural ordering. That is, any type
-for which Python can say that one value is less than, equal to or greater 
-than another. If we want to sort objects from a class we have written ourselves
+for which Python can say that one value is *less than*, *equal to* or *greater 
+than* another. If we want to sort objects from a class we have written ourselves
 we need to tell Python how to make those comparisons. This is what you'll be doing
 in the following exercises.
 
@@ -108,7 +107,7 @@ with two underscores. Three dunder methods are already defined in the
 methods allow us to govern what happens when we call `str` or `print`
 on a `Person` object.
 
-We need to define those methods that allow us to *order*
+We need to define those methods that allow us to order
 instances of the same class. These are `__lt__` ("less than"),
 `__le__` ("less than or equal to"), `__eq__` ("equal to") and `__gt__`
 ("greater than").
@@ -139,6 +138,8 @@ instances of the same class. These are `__lt__` ("less than"),
    their first *and* last names are equal. For the `__lt__`, `__le__`
    and `__gt__` methods the comparison should be based on the *last
    name only*. 
+
+   Test your work with the `test_sort_basic` test.
    
 
 

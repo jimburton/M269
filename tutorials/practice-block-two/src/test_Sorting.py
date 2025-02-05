@@ -19,10 +19,9 @@ class Testing(unittest.TestCase):
         """Test that the bubble_sort function behaves like the built-in sort function.
         """
         ints = random.sample(range(1, 101), 100)
-        print(ints)
         sorted_ints = bubble_sort(ints)
-        print(sorted_ints)
-        self.assertEqual(sorted_ints, sorted(ints))      
+        self.assertEqual(sorted_ints, sorted(ints))
+        
     def test_sort_basic(self):
         """Test that we can sort using the default method.
         """
