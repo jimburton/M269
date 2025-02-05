@@ -45,6 +45,7 @@ side of any page and select **solutions**.
    
    ```python
    def bubble_sort(inlist: list) -> list:
+   ```
    
    Suppose we have an unsorted collection, `C`, where `n` is the
    number of elements in `C`. Bubble Sort begins by comparing the
