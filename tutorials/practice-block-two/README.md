@@ -41,7 +41,7 @@ side of any page and select **solutions**.
 
 1. Implement the *Bubble Sort* algorithm in the file
    [src/Sorting.py](./src/Sorting.py) to sort lists of integers. Do so by 
-   adding to the function that has this signature:
+   completing the function that has this signature:
    
    ```python
    def bubble_sort(inlist: list) -> list:
