@@ -12,9 +12,9 @@ should be self-contained and will be useful preparation for later
 on. In addition, it teaches some Python techniques that you may not
 have come across yet. 
 
-There is more work here than we can probably do in one session and the
-later exercises are pretty challenging. Don't worry if you don't
-finish the work during the tutorial.
+There is more work here than we can do in one session and the later
+exercises are pretty challenging. Don't worry if you don't finish the
+work during the tutorial.
 
 *Bubble Sort* is a simple sorting algorithm. Its purpose is to
 transform a collection (such as a list or an array) so that every
@@ -37,33 +37,83 @@ the `solutions` branch of this repository. To do this on the GitHub
 website, click on the button labelled **main** in the upper left hand
 side of any page and select **solutions**. 
 
+## Exercises
+
+1. Implement the *Bubble Sort* algorithm in the file
+   [src/Sorting.py](./src/Sorting.py) to sort lists of integers. Do so by 
+   adding to the function that has this signature:
+   
+   ```python
+   def bubble_sort(inlist: list) -> list:
+   ```
+   
+   Suppose we have an unsorted collection, `C`, where `n` is the
+   number of elements in `C`. Bubble Sort begins by comparing the
+   first element of `C`, `a`, to the second, `b`. If `a` is greater
+   than `b`, we swap them. Then we compare the second element, `b`, to
+   the third element, `c`. Again, if `b` is greater than `c`, we
+   swap. We carry on in this way to the end of the collection, and
+   call this the "first pass". By the end of the first pass the
+   greatest element in the collection will have "bubbled up" all the
+   way to the last position, `n-1`, so we don't need to check it
+   again. So on the first pass we loop from 0 to `n-1`. On the second
+   pass we start again at the beginning and loop from 0 to `n-2`, and
+   so on. If during any pass there was no need to swap anything then
+   it stands to reason that the data is sorted. So we add a boolean
+   flag called `swapped` to keep track of whether anything was swapped
+   on the current pass. If nothing was swapped, we can exit the outer
+   loop. 
+
+   If you want more guidance on implementing the function, see 
+   [the pseudocode here](./BubbleSort.md).
+
+2. Run the first unit test. It should pass if your implementation of
+   Bubble Sort is correct. The unit tests are defined in the file
+   [src/test_Sorting.py](./src/test_Sorting.py). IDEs like VSCode,
+   PyCharm and others provide good tooling for unit tests -- easy ways
+   to run them from within the editor. How you do that will depend on
+   the IDE. Ask for advice in the tutorial if necessary. You can
+   always run them from a terminal though. First, navigate to the
+   `src/` directory. On my system, the command to run python is
+   `python3` -- it may differ on yours. These are the commands to run
+   all of the tests at once or just the first one:
+   
+   ```
+   $ python3 -m unittest -v test_Sorting.Testing.test_bubble_sort # runs one of the tests
+   $ python3 -m unittest -v test_Sorting.Testing # runs all of the tests
+   ```
+   
+If your `bubble_sort` function works with a list of integers it should 
+work for lists of any type that has a natural ordering. That is, any type
+for which Python can say that one value is less than, equal to or greater 
+than another. If we want to sort objects from a class we have written ourselves
+we need to tell Python how to make those comparisons. This is what you'll be doing
+in the following exercises.
+
 The data we will be sorting is made up of `Person`
 objects. `Person` is a simple class encapsulating two strings (first
 and last name) and the date of birth of a person. Read the code
 here: [src/Person.py](./src/Person.py), and don't worry if there are
 parts of it you don't understand right now.
 
-Before we can sort these objects we need to establish how we can
-determine that one is less than, equal to or greater than another.
+## Python's dunder methods
 
-## Python's magic methods
-
-Python's so-called magic methods are used to determine the default
+Python's so-called dunder methods are used to determine the default
 behaviour of objects in a wide variety of ways. You've already
 encountered at least one of these: the constructor method, `__init__`,
 that determines what happens when we make a new instance of a
-class. The names of all magic methods begin and end like `__init__`
-with two underscores. Three magic methods are already defined in the
+class. The names of all dunder methods begin and end like `__init__`
+with two underscores. Three dunder methods are already defined in the
 `Person` class: `__init__`, `__str__` and `__repr__`. The latter
 methods allow us to govern what happens when we call `str` or `print`
 on a `Person` object.
 
-We need to define those magic methods that allow us to *order*
+We need to define those methods that allow us to *order*
 instances of the same class. These are `__lt__` ("less than"),
 `__le__` ("less than or equal to"), `__eq__` ("equal to") and `__gt__`
 ("greater than").
 
-1. Add the four comparison methods above to the [Person
+3. Add the four comparison methods above to the [Person
    class](./src/Person.py). Each of them should take two arguments:
    `self` (like all instance methods of a class) and the object that
    we want to compare `self` to. One convention is to call the second
@@ -90,99 +140,11 @@ instances of the same class. These are `__lt__` ("less than"),
    and `__gt__` methods the comparison should be based on the *last
    name only*. 
 
-2. Implement the *Bubble Sort* algorithm in the file
-   [src/Sorting.py](./src/Sorting.py). Do so by adding to the function that has this
-   signature:
-   
-   ```python
-   def bubble_sort(inlist: list) -> list:
-   ```
-   
-   Suppose we have an unsorted collection, `C`, where `n` is the
-   number of elements in `C`. Bubble Sort begins by comparing the
-   first element of `C`, `a`, to the second, `b`. If `a` is greater
-   than `b`, we swap them. Then we compare the second element,
-   `b`, to the third element, `c`. Again, if `b` is greater than `c`,
-   we swap. We carry on in this way to the end of the collection, and
-   call this the "first pass". By the end of the first pass the
-   greatest element in the collection will have "bubbled up" all the
-   way to the last position, `n-1`, so we don't need to check it again. So on
-   the first pass we loop from 0 to `n-1`. On the second pass we start
-   again at the beginning and loop from 0 to `n-2`, and so on. Here is
-   the pseudocode:
-   
-   ```
-   procedure bubbleSort(A : list of sortable items)
-       n := length(A)
-       for i := 0 to n-1
-           for j := 0 to n-i-1
-               # if this pair is out of order 
-               if A[j] > A[j+1] then
-                   # swap the values
-                   swap(A[j], A[j+1]) # you need to decide how to do this
-               end if
-           end for
-       end for
-       return A
-   end procedure
-   ```
-
-   Read this pseudocode carefully and make sure you understand
-   it. Hopefully, it should be pretty easy for you to convert it to
-   Python. Note that there is no `swap` function in Python and you
-   should perform that step "manually", swapping the values
-   yourself. 
-   
-   However, base your implementation on the version below which adds
-   a simple optimisation that improves performance in the best case
-   scenario. That scenario occurs when the data is either already
-   sorted or becomes sorted after only a few passes. If on any given
-   pass we don't swap any values, then we know the data is sorted and
-   we can stop. So we add a boolean flag called `swapped` to keep
-   track of whether anything was swapped on the current pass. If
-   nothing was swapped, we can exit the outer loop.
-
-   ```
-   procedure bubbleSort(A : list of sortable items)
-       n := length(A)
-       for i := 0 to n-1
-           swapped := false
-           for j := 0 to n-i-1
-               # if this pair is out of order 
-               if A[j] > A[j+1] then
-                   # swap the values
-                   swap(A[j], A[j+1]) # you need to decide how to do this
-                   swapped := true
-               end if
-            end for
-            if swapped = false:
-                break
-       end for
-       return A
-   end procedure
-   ```
-   
-3. Run the first unit test. It should pass if your implementation of
-   Bubble Sort is correct. The unit tests are defined in the file
-   [src/test_Sorting.py](./src/test_Sorting.py). IDEs like VSCode,
-   PyCharm and others provide good tooling for unit tests -- easy ways
-   to run them from within the editor. How you do that will depend on
-   the IDE. Ask for advice in the tutorial if necessary. You can
-   always run them from a terminal though. First, navigate to the
-   `src/` directory. On my system, the command to run python is
-   `python3` -- it may differ on yours. These are the commands to run
-   all of the tests at once or just the first one:
-   
-   ```
-   $ python3 -m unittest -v test_Sorting.Testing # runs all of the tests
-   $ python3 -m unittest -v test_Sorting.Testing.test_sort_basic # runs one of the tests
-   ```
-
 The built in Python sorting methods, e.g. `sorted(list)` and
 `list.sort()`, take an *optional* argument called `key` that determines
 how the comparison between two objects should be made. So if we want
 to sort `Person` objects by the `dob` field, instead of just using the
-default way we defined in the magic methods, we could do it like this:
+default way we defined in the dunder methods, we could do it like this:
 
 ```python
 # people is a list of Person objects

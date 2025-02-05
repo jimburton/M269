@@ -13,7 +13,7 @@ from Person import Person
 #   comparator function, bubble_sort_all_features, that matches what
 #   you are asked to do for exercise 8.
 
-def bubble_sort_no_key(inlist: list) -> list:
+def bubble_sort(inlist: list) -> list:
     """ Sort the input list using the Bubble Sort algorithm."""
     n = len(inlist)
     # Traverse the list
