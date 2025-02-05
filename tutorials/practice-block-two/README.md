@@ -65,7 +65,8 @@ side of any page and select **solutions**.
    loop. 
 
    If you want more guidance on implementing the function, see 
-   [the pseudocode here](./BubbleSort.md). 
+   [the pseudocode here](./BubbleSort.md). There is a helpful visualisation
+   of the algorithm [here](https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html).
 
 2. Run the first unit test. It should pass if your implementation of
    Bubble Sort is correct. The unit tests are defined in the file
