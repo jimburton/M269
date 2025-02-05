@@ -37,14 +37,64 @@ the `solutions` branch of this repository. To do this on the GitHub
 website, click on the button labelled **main** in the upper left hand
 side of any page and select **solutions**. 
 
+## Exercises
+
+1. Implement the *Bubble Sort* algorithm in the file
+   [src/Sorting.py](./src/Sorting.py) to sort lists of integers. Do so by 
+   adding to the function that has this signature:
+   
+   ```python
+   def bubble_sort(inlist: list) -> list:
+   ```
+   
+   Suppose we have an unsorted collection, `C`, where `n` is the
+   number of elements in `C`. Bubble Sort begins by comparing the
+   first element of `C`, `a`, to the second, `b`. If `a` is greater
+   than `b`, we swap them. Then we compare the second element, `b`, to
+   the third element, `c`. Again, if `b` is greater than `c`, we
+   swap. We carry on in this way to the end of the collection, and
+   call this the "first pass". By the end of the first pass the
+   greatest element in the collection will have "bubbled up" all the
+   way to the last position, `n-1`, so we don't need to check it
+   again. So on the first pass we loop from 0 to `n-1`. On the second
+   pass we start again at the beginning and loop from 0 to `n-2`, and
+   so on. If during any pass there was no need to swap anything then
+   it stands to reason that the data is sorted. So we add a boolean
+   flag called `swapped` to keep track of whether anything was swapped
+   on the current pass. If nothing was swapped, we can exit the outer
+   loop. 
+
+   If you want more guidance on implementing the function, see 
+   [the pseudocode here](./BubbleSort.md).
+
+2. Run the first unit test. It should pass if your implementation of
+   Bubble Sort is correct. The unit tests are defined in the file
+   [src/test_Sorting.py](./src/test_Sorting.py). IDEs like VSCode,
+   PyCharm and others provide good tooling for unit tests -- easy ways
+   to run them from within the editor. How you do that will depend on
+   the IDE. Ask for advice in the tutorial if necessary. You can
+   always run them from a terminal though. First, navigate to the
+   `src/` directory. On my system, the command to run python is
+   `python3` -- it may differ on yours. These are the commands to run
+   all of the tests at once or just the first one:
+   
+   ```
+   $ python3 -m unittest -v test_Sorting.Testing.test_bubble_sort # runs one of the tests
+   $ python3 -m unittest -v test_Sorting.Testing # runs all of the tests
+   ```
+   
+If your `bubble_sort` function works with a list of integers it should 
+work for lists of any type that has a natural ordering. That is, any type
+for which Python can say that one value is less than, equal to or greater 
+than another. If we want to sort objects from a class we have written ourselves
+we need to tell Python how to make those comparisons. This is what you'll be doing
+in the following exercises.
+
 The data we will be sorting is made up of `Person`
 objects. `Person` is a simple class encapsulating two strings (first
 and last name) and the date of birth of a person. Read the code
 here: [src/Person.py](./src/Person.py), and don't worry if there are
 parts of it you don't understand right now.
-
-Before we can sort these objects we need to establish how we can
-determine that one is less than, equal to or greater than another.
 
 ## Python's dunder methods
 
@@ -63,7 +113,7 @@ instances of the same class. These are `__lt__` ("less than"),
 `__le__` ("less than or equal to"), `__eq__` ("equal to") and `__gt__`
 ("greater than").
 
-1. Add the four comparison methods above to the [Person
+2. Add the four comparison methods above to the [Person
    class](./src/Person.py). Each of them should take two arguments:
    `self` (like all instance methods of a class) and the object that
    we want to compare `self` to. One convention is to call the second
@@ -89,50 +139,8 @@ instances of the same class. These are `__lt__` ("less than"),
    their first *and* last names are equal. For the `__lt__`, `__le__`
    and `__gt__` methods the comparison should be based on the *last
    name only*. 
+   
 
-2. Implement the *Bubble Sort* algorithm in the file
-   [src/Sorting.py](./src/Sorting.py). Do so by adding to the function that has this
-   signature:
-   
-   ```python
-   def bubble_sort(inlist: list) -> list:
-   ```
-   
-   Suppose we have an unsorted collection, `C`, where `n` is the
-   number of elements in `C`. Bubble Sort begins by comparing the
-   first element of `C`, `a`, to the second, `b`. If `a` is greater
-   than `b`, we swap them. Then we compare the second element, `b`, to
-   the third element, `c`. Again, if `b` is greater than `c`, we
-   swap. We carry on in this way to the end of the collection, and
-   call this the "first pass". By the end of the first pass the
-   greatest element in the collection will have "bubbled up" all the
-   way to the last position, `n-1`, so we don't need to check it
-   again. So on the first pass we loop from 0 to `n-1`. On the second
-   pass we start again at the beginning and loop from 0 to `n-2`, and
-   so on. If during any pass there was no need to swap anything then
-   it stands to reason that the data is sorted. So we add a boolean
-   flag called `swapped` to keep track of whether anything was swapped
-   on the current pass. If nothing was swapped, we can exit the outer
-   loop. 
-
-   If you want more guidance on implementing the function, see 
-   [the pseudocode here](./BubbleSort.md).
-   
-3. Run the first unit test. It should pass if your implementation of
-   Bubble Sort is correct. The unit tests are defined in the file
-   [src/test_Sorting.py](./src/test_Sorting.py). IDEs like VSCode,
-   PyCharm and others provide good tooling for unit tests -- easy ways
-   to run them from within the editor. How you do that will depend on
-   the IDE. Ask for advice in the tutorial if necessary. You can
-   always run them from a terminal though. First, navigate to the
-   `src/` directory. On my system, the command to run python is
-   `python3` -- it may differ on yours. These are the commands to run
-   all of the tests at once or just the first one:
-   
-   ```
-   $ python3 -m unittest -v test_Sorting.Testing # runs all of the tests
-   $ python3 -m unittest -v test_Sorting.Testing.test_sort_basic # runs one of the tests
-   ```
 
 The built in Python sorting methods, e.g. `sorted(list)` and
 `list.sort()`, take an *optional* argument called `key` that determines

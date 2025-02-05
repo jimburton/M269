@@ -1,4 +1,5 @@
 import unittest
+import random
 from datetime import datetime
 from Sorting import *
 
@@ -14,6 +15,14 @@ class Testing(unittest.TestCase):
         self.people.append(Person("Allen",   "Ginsberg",  datetime(1926, 6, 3)))
         self.people.append(Person("William", "Burroughs", datetime(1914, 2, 5)))
 
+    def test_bubble_sort(self):
+        """Test that the bubble_sort function behaves like the built-in sort function.
+        """
+        ints = random.sample(range(1, 101), 100)
+        print(ints)
+        sorted_ints = bubble_sort(ints)
+        print(sorted_ints)
+        self.assertEqual(sorted_ints, sorted(ints))      
     def test_sort_basic(self):
         """Test that we can sort using the default method.
         """
