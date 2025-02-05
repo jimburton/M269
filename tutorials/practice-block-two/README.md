@@ -113,7 +113,7 @@ instances of the same class. These are `__lt__` ("less than"),
 `__le__` ("less than or equal to"), `__eq__` ("equal to") and `__gt__`
 ("greater than").
 
-2. Add the four comparison methods above to the [Person
+3. Add the four comparison methods above to the [Person
    class](./src/Person.py). Each of them should take two arguments:
    `self` (like all instance methods of a class) and the object that
    we want to compare `self` to. One convention is to call the second
